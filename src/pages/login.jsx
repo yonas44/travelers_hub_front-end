@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-// import { useFlash } from '../feature/flash/flash';
 import { cleanFlash, resetStateAndKeepFlash, signin } from '../feature/auth/auth';
 import { flash } from '../feature/flash/flash';
 
