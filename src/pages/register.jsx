@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { cleanFlash, resetStateAndKeepFlash, signup } from '../feature/auth/auth';
-import { flash } from '../feature/flash/flash';
+import { cleanFlash, resetStateAndKeepFlash, signup } from '../redux/auth/auth';
+import { flash } from '../redux/flash/flash';
 
 export default function Register() {
   const [username, setUsername] = useState('');
