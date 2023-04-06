@@ -9,16 +9,24 @@ const Package = () => {
   }, [dispatch]);
 
   const packages = useSelector((state) => state.flightpackage);
-  console.log('we changed', packages);
 
   return (
     <div>
-      <h1>hello dear</h1>
       <div>
         {
           packages.loading ? (<p>loading...</p>) : (
             packages.flightpackage.map((flight) => (
-              <h1 key={flight.id}>{flight.title}</h1>
+              <div key={flight.id}>
+                <div><img alt={flight.title} src={flight.photo} /></div>
+                <div>
+                  <h1 key={flight.id}>{flight.title}</h1>
+                  <p>
+                    $
+                    {flight.price}
+                  </p>
+                </div>
+                <p className="flex font-[60px] text-[#fff]">{flight.destination}</p>
+              </div>
             ))
           )
         }
