@@ -17,7 +17,7 @@ const Reservations = () => {
     if (!localStorage.getItem('token')) navigate('/login');
     setUser(localStorage.getItem('user'));
     dispatch(getReservations());
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   const allBookings = useSelector((state) => state.reservations);
   const bookings = allBookings.data.filter((booking) => {
