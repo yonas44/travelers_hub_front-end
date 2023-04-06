@@ -41,3 +41,7 @@ const BookingForm = () => {
     </div>
   );
 };
+
+export default function Bookings() {
+  return <BookingForm />;
+}
