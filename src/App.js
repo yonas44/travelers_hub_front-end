@@ -1,7 +1,9 @@
+import Package from './pages/Package';
+
 function App() {
   return (
     <div className="App">
-      <p>hello world</p>
+      <Package />
     </div>
   );
 }
