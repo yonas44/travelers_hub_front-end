@@ -5,7 +5,7 @@ import FilterOptions from '../filterOptions';
 import './reservations.css';
 import load from '../../assets/load.gif';
 import Reservation from './singleReservation';
-import getReservations from '../../feature/reservations/getReservations';
+import getReservations from '../../redux/reservations/getReservations';
 
 const Reservations = () => {
   const navigate = useNavigate();

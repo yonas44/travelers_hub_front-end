@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import {
   filterReservations,
   selectedReservations,
-} from '../feature/reservations/reservationSlice';
+} from '../redux/reservations/reservationSlice';
 
 const FilterOptions = () => {
   const dispatch = useDispatch();

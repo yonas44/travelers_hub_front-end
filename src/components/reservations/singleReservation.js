@@ -4,8 +4,8 @@ import { BiWorld } from 'react-icons/bi';
 import { GiCheckMark } from 'react-icons/gi';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { PropTypes } from 'prop-types';
-import deleteReservation from '../../feature/reservations/deleteReservations';
-import getReservations from '../../feature/reservations/getReservations';
+import deleteReservation from '../../redux/reservations/deleteReservations';
+import getReservations from '../../redux/reservations/getReservations';
 
 const Reservation = (props) => {
   const { booking, user, setMessage } = props;
