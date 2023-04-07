@@ -33,6 +33,7 @@ export default function Login() {
 
     if (message) {
       flash('success', message);
+      navigate('/');
     }
 
     dispatch(cleanFlash());
