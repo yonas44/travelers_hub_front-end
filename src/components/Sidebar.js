@@ -11,12 +11,12 @@ const Sidebar = ({ sidebar }) => {
       <div>
         <h1 className={style.text}>Travellers Hub</h1>
         <ul className="mt-[20px]">
-          <Link to="/"><li className={style.list}><a href="https://broken.com">Home</a></li></Link>
-          <li className={style.list}><a href="https://broken.com">Booking</a></li>
-          <li className={style.list}><a href="https://broken.com">Promotions</a></li>
-          <li className={style.list}><a href="https://broken.com">Reservations</a></li>
-          <li className={style.list}><a href="https://broken.com">About</a></li>
-          <li className={style.list}><a href="https://broken.com">Register</a></li>
+          <Link to="/"><li className={style.list}>Home</li></Link>
+          <li className={style.list}>Booking</li>
+          <li className={style.list}>Promotions</li>
+          <li className={style.list}>Reservations</li>
+          <li className={style.list}>About</li>
+          <Link to="/sign_up"><li className={style.list}>Register</li></Link>
         </ul>
       </div>
     </div>

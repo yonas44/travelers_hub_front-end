@@ -24,7 +24,7 @@ const Package = () => {
           packages.flightpackage.map((flight) => (
             <div key={flight.id}>
               <Link state={flight} to="/details">
-                <small className="absolute text-[#fff] m-2 rounded-md p-[3px] bg-[#237bad]">
+                <small className="absolute text-[#fff] m-2 rounded-md p-[1px] bg-[#237bad]">
                   {
                     flight.flight ? (
                       <p className="flex gap-2 items-center">

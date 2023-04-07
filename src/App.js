@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Register from './pages/register';
+import Login from './pages/login';
 import Package from './pages/Package';
 import PackageDetails from './components/PackageDetails';
 import Navbar from './components/Navbar';
@@ -22,6 +24,8 @@ const App = () => {
           <div className="main-container">
             <Routes>
               <Route path="/" element={<Package />} />
+              <Route path="/sign_up" element={<Register />} />
+              <Route path="/sign_in" element={<Login />} />
               <Route path="/details" element={<PackageDetails />} />
             </Routes>
           </div>
