@@ -1,0 +1,41 @@
+.packages {
+  border-radius: 0px 0px 15px 15px;
+}
+
+.sidebar {
+  background-color: grey;
+  transition: .5s;
+  width: 300px;
+  position: fixed;
+  height: 100%;
+  z-index: 10;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    display: none;
+  }
+
+  .open {
+    display: block;
+  }
+}
+
+.package_details {
+  color: #008000;
+  margin-left: 4px;
+}
+
+.package_detail {
+  color: blue;
+}
+
+.packageDetails_img {
+  width: 80%;
+}
+
+.sidebar_title {
+  color: #17179fad;
+  font-style: oblique;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

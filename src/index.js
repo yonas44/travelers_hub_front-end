@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+// eslint-disable-next-line
 import App from './App';
 import store from './redux/configureStore';
 
