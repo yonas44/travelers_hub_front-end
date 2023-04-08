@@ -20,7 +20,7 @@ const App = () => {
       <body>
         <Navbar handleSidebar={handleSidebar} sidebar={sidebar} />
         <main className={style.main}>
-          <Sidebar sidebar={sidebar} />
+          <Sidebar sidebar={sidebar} handleSidebar={handleSidebar} />
           <div className="main-container">
             <Routes>
               <Route path="/" element={<Package />} />

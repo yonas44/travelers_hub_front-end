@@ -5,7 +5,7 @@ import { GrClose } from 'react-icons/gr';
 // eslint-disable-next-line
 const Navbar = ({ handleSidebar, sidebar }) => {
   const style = {
-    text: 'text-[27px] sidebar_title px-4 text-[#1c1cc7] font-extrabold py-[25px]',
+    text: 'text-[27px] sidebar_title px-4 text-[#1c1cc7] font-extrabold py-[7px]',
   };
   return (
     <div className="md:hidden bg-[#fff] sticky top-0 w-full">
