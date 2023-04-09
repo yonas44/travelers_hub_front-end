@@ -52,11 +52,14 @@
   .add-package-form {
     display: flex;
     padding: 40px 20px;
-    color: white;
     justify-content: center;
     gap: 15px;
     flex-direction: column;
     align-items: start;
+  }
+  
+  .form-holder h2 {
+    color: white;
   }
   
   .add-package-form input,

@@ -6,7 +6,7 @@ import addPackageImage from '../../assets/add_package.jpg';
 import NewPackageForm from './NewPackageForm';
 
 const AddPackage = () => {
-  const packages = useSelector((state) => state.packages);
+  const packages = useSelector((state) => state.flightPackages);
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');

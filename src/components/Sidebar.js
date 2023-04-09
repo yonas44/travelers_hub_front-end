@@ -9,7 +9,6 @@ import { ImNotification } from 'react-icons/im';
 import { BsFillBagDashFill } from 'react-icons/bs';
 import { MdOutlineRoundaboutRight } from 'react-icons/md';
 import airline from '../images/airline-gif.gif';
-import AddPackage from './Packages/AddPackage';
 // eslint-disable-next-line
 const Sidebar = ({ sidebar, handleSidebar }) => {
   const style = {
