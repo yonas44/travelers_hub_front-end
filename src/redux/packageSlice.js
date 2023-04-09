@@ -1,9 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import addPackage from './Packages/addPackage';
 
 const initialState = {
+  sucess: false,
   loading: false,
   flightpackage: [],
+  message: '',
   error: '',
 };
 
@@ -39,6 +42,33 @@ const packageSlice = createSlice({
       // eslint-disable-next-line
       state.error = action.error.message;
     });
+    builder
+    .addCase(addPackage.fulfilled, (state, action) => {
+      if (action.payload.error) {
+        return {
+          ...state,
+          loading: false,
+          sucess: false,
+          error: action.payload.error,
+        };
+      }
+
+      return {
+        ...state,
+        sucess: true,
+        loading: false,
+        message: action.payload.message,
+      };
+    })
+    .addCase(addPackage.pending, (state) => ({
+      ...state,
+      loading: true,
+    }))
+    .addCase(addPackage.rejected, (state, action) => ({
+      ...state,
+      sucess: false,
+      message: action.payload.message,
+    }));
   },
 });
 
