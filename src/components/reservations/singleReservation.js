@@ -1,52 +1,52 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { BiWorld } from 'react-icons/bi';
 import { GiCheckMark } from 'react-icons/gi';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { PropTypes } from 'prop-types';
+import { useDispatch } from 'react-redux';
 import deleteReservation from '../../redux/reservations/deleteReservations';
-import getReservations from '../../redux/reservations/getReservations';
 
 const Reservation = (props) => {
-  const { booking, user, setMessage } = props;
-
+  const {
+    packageImage,
+    bookingAuthorId,
+    bookingId,
+    current,
+    bookingDestination,
+    packageTitle,
+  } = props;
   const dispatch = useDispatch();
-  const handleDelete = async (id) => {
-    try {
-      const confirmed = window.confirm('Are you sure, you want to delete it?');
-      if (confirmed) {
-        const data = await deleteReservation(id);
-        setMessage(data.message);
-        dispatch(getReservations());
-      }
-    } catch (err) {
-      console.log(err);
+
+  const handleDelete = (id) => {
+    const confirmed = window.confirm('Are you sure, you want to delete it?');
+    if (confirmed) {
+      dispatch(deleteReservation(id));
     }
   };
 
   return (
     <div className="reservation">
-      <img id="package-img" src={booking.package.photo[0]} alt="package-img" />
-      {Number(user) === booking.user_id && (
+      <img id="package-img" src={packageImage} alt="package-img" />
+      {Number(current) === bookingAuthorId && (
         <span id="booking-owner-badge">Owned</span>
       )}
       <div className="reservation-info">
-        <h3>{booking.package.title}</h3>
+        <h3>{packageTitle}</h3>
         <p>
           Booked
           <GiCheckMark id="check-mark" />
         </p>
-        <p>
+        <p id="destination-info">
           <BiWorld />
-          {booking.package.destination}
+          {bookingDestination}
         </p>
       </div>
-      {Number(user) === booking.user_id && (
+      {Number(current) === bookingAuthorId && (
         <div className="owner-options">
           <button type="button" id="remove-reservation-btn">
             <RiDeleteBin5Fill
-              className="user-btns"
-              onClick={() => handleDelete(booking.id)}
+              className="current-btns"
+              onClick={() => handleDelete(bookingId)}
             />
           </button>
         </div>
@@ -56,15 +56,21 @@ const Reservation = (props) => {
 };
 
 Reservation.defaultProps = {
-  setMessage: null,
-  user: null,
-  booking: null,
+  current: null,
+  packageImage: null,
+  bookingAuthorId: null,
+  bookingId: null,
+  bookingDestination: null,
+  packageTitle: null,
 };
 
 Reservation.propTypes = {
-  setMessage: PropTypes.func,
-  user: PropTypes.string,
-  booking: PropTypes.string,
+  current: PropTypes.string,
+  packageImage: PropTypes.string,
+  bookingAuthorId: PropTypes.number,
+  bookingId: PropTypes.number,
+  bookingDestination: PropTypes.string,
+  packageTitle: PropTypes.string,
 };
 
 export default Reservation;

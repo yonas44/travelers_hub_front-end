@@ -10,14 +10,8 @@ import getReservations from '../../redux/reservations/getReservations';
 const Reservations = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [user, setUser] = useState();
+  const [current, setCurrent] = useState();
   const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    if (!localStorage.getItem('token')) navigate('/login');
-    setUser(localStorage.getItem('user'));
-    dispatch(getReservations());
-  }, [dispatch, navigate]);
 
   const allBookings = useSelector((state) => state.reservations);
   const bookings = allBookings.data.filter((booking) => {
@@ -26,7 +20,7 @@ const Reservations = () => {
         return true;
       }
     } else if (
-      booking.user_id === Number(user)
+      booking.user_id === Number(current)
       && booking.package.title.toLowerCase().includes(allBookings.filterby)
     ) {
       return true;
@@ -34,8 +28,16 @@ const Reservations = () => {
     return false;
   });
 
+  useEffect(() => {
+    if (!sessionStorage.getItem('current')) navigate('/sign_in');
+    setCurrent(sessionStorage.getItem('current'));
+    dispatch(getReservations());
+    setMessage(allBookings.message);
+  }, [allBookings.change]);
+  console.log(bookings);
+
   return (
-    <main>
+    <main className="reservation-main">
       {allBookings.pending ? (
         <div className="loading-wrapper">
           <img id="loading-gif" src={load} alt="loading-img" />
@@ -45,13 +47,16 @@ const Reservations = () => {
           <p className={`removed-message ${message && 'slide'}`}>{message}</p>
           <FilterOptions />
           <section className="reservations-holder">
-            {bookings.length ? (
+            {bookings.length > 0 ? (
               bookings.map((booking) => (
                 <Reservation
                   key={booking.id}
-                  booking={booking}
-                  setMessage={setMessage}
-                  user={user}
+                  packageImage={booking.package.photo[0]}
+                  bookingAuthorId={booking.user_id}
+                  bookingId={booking.id}
+                  packageTitle={booking.package.title}
+                  bookingDestination={booking.package.destination}
+                  current={current}
                 />
               ))
             ) : (

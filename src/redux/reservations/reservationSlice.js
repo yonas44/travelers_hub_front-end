@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import deleteReservation from './deleteReservations';
 import getReservations from './getReservations';
 
 const reservationSlice = createSlice({
@@ -6,7 +7,8 @@ const reservationSlice = createSlice({
   initialState: {
     pending: false,
     filterby: '',
-    message: 'Sorry, nothing to display',
+    change: false,
+    message: '',
     selected: 'All',
     toBeEdited: null,
     data: [],
@@ -20,10 +22,6 @@ const reservationSlice = createSlice({
       ...state,
       selected: action.payload,
     }),
-    toBeEditedReservation: (state, action) => ({
-      ...state,
-      toBeEdited: action.payload,
-    }),
   },
   extraReducers: (builder) => {
     builder
@@ -31,7 +29,12 @@ const reservationSlice = createSlice({
         if (action.payload.sucess) {
           return { ...state, pending: false, data: action.payload.data };
         }
-        return { ...state, pending: false, message: action.payload.message };
+        return {
+          ...state,
+          pending: false,
+          message: action.payload.message,
+          data: [],
+        };
       })
       .addCase(getReservations.rejected, (state, action) => ({
         ...state,
@@ -41,13 +44,20 @@ const reservationSlice = createSlice({
       .addCase(getReservations.pending, (state) => ({
         ...state,
         pending: true,
-      }));
+      }))
+      .addCase(deleteReservation.fulfilled, (state, action) => {
+        if (action.payload.sucess) {
+          return {
+            ...state,
+            pending: false,
+            message: action.payload.message,
+            change: !state.change,
+          };
+        }
+        return { ...state, pending: false, message: action.payload.error };
+      });
   },
 });
 
 export default reservationSlice.reducer;
-export const {
-  filterReservations,
-  selectedReservations,
-  toBeEditedReservation,
-} = reservationSlice.actions;
+export const { filterReservations, selectedReservations } = reservationSlice.actions;
