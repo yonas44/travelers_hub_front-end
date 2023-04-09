@@ -28,6 +28,7 @@ const App = () => {
             <Route path="/sign_in" element={<Login />} />
             <Route path="/details" element={<PackageDetails />} />
             <Route path="/reservations" element={<Reservations />} />
+            <Route element={<AddPackage />} path="/new_package" />
           </Routes>
         </div>
       </main>
