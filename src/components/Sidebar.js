@@ -55,6 +55,12 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
               About
             </li>
           </Link>
+          <Link className={style.link} onClick={handleSidebar} to="/new_package">
+            <li className={style.list}>
+              <MdOutlineRoundaboutRight /> 
+              AddPackage
+            </li>
+          </Link>
           <Link className={style.link} onClick={handleSidebar} to="/sign_up">
             <li className={style.list}>
               <AiOutlineLogin />

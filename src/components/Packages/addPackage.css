@@ -1,0 +1,144 @@
+.add-package-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    text-align: left;
+  }
+  
+  .form-holder {
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0.521)),
+      url(../../assets/add_package.jpg);
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .form-with-img {
+    display: flex;
+    border: 1px solid black;
+    background-color: grey;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  #add_package_img {
+    display: none;
+    width: 400px;
+  }
+  
+  .package-image-holder {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  #add-image-btn {
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+    background-color: transparent;
+  }
+  
+  .add-package-form {
+    display: flex;
+    padding: 40px 20px;
+    justify-content: center;
+    gap: 15px;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  .form-holder h2 {
+    color: white;
+  }
+  
+  .add-package-form input,
+  textarea,
+  select {
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+  }
+  
+  #create-package-btn {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .add-images-container {
+    display: flex;
+    overflow-x: auto;
+    width: 450px;
+    gap: 5px;
+    height: fit-content;
+  }
+  
+  .new-img-wrapper {
+    position: relative;
+  }
+  
+  .remove-img {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  
+  .added_img {
+    width: 200px;
+  }
+  
+  .added-message,
+  .added-message-error {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    visibility: hidden;
+    width: fit-content;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    top: 10px;
+    right: -100%;
+  }
+  
+  .slide {
+    visibility: visible;
+    animation: slide 2s;
+  }
+  
+  @keyframes slide {
+    100% {
+      right: 0;
+    }
+  
+    25% {
+      right: 0;
+    }
+  }
+  
+  .added-message-error {
+    background-color: red;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .form-holder {
+      background: linear-gradient(rgba(0, 0, 0, 0.808), rgba(0, 0, 0, 0.521));
+    }
+  
+    #add_package_img {
+      display: block;
+    }
+  }
