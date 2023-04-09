@@ -9,6 +9,7 @@ import { ImNotification } from 'react-icons/im';
 import { BsFillBagDashFill } from 'react-icons/bs';
 import { MdOutlineRoundaboutRight } from 'react-icons/md';
 import airline from '../images/airline-gif.gif';
+import AddPackage from './Packages/AddPackage';
 // eslint-disable-next-line
 const Sidebar = ({ sidebar, handleSidebar }) => {
   const style = {
@@ -53,6 +54,12 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
             <li className={style.list}>
               <MdOutlineRoundaboutRight />
               About
+            </li>
+          </Link>
+          <Link className={style.link} onClick={handleSidebar} to="/new_package">
+            <li className={style.list}>
+              <MdOutlineRoundaboutRight /> 
+              AddPackage
             </li>
           </Link>
           <Link className={style.link} onClick={handleSidebar} to="/sign_up">
