@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AiFillHome, AiOutlineLogin, AiOutlineShoppingCart } from 'react-icons/ai';
+import {
+  AiFillHome,
+  AiOutlineLogin,
+  AiOutlineShoppingCart,
+} from 'react-icons/ai';
 import { ImNotification } from 'react-icons/im';
 import { BsFillBagDashFill } from 'react-icons/bs';
 import { MdOutlineRoundaboutRight } from 'react-icons/md';
@@ -35,7 +39,11 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
               Promotions
             </li>
           </Link>
-          <Link className={style.link} onClick={handleSidebar} to="/reservations">
+          <Link
+            className={style.link}
+            onClick={handleSidebar}
+            to="/reservations"
+          >
             <li className={style.list}>
               <BsFillBagDashFill />
               Reservations
@@ -54,7 +62,9 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
             </li>
           </Link>
         </ul>
-        <div className="mt-[40%]"><img className="airline_giphy" alt="airline_giphy" src={airline} /></div>
+        <div className="mt-[40%]">
+          <img className="airline_giphy" alt="airline_giphy" src={airline} />
+        </div>
       </div>
     </div>
   );

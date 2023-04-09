@@ -13,7 +13,7 @@ const Navbar = ({ handleSidebar, sidebar }) => {
         <h1 className={style.text}>Travellers Hub</h1>
         {/* eslint-disable-next-line */}
         <button onClick={handleSidebar} className="px-4" type="button">
-          { !sidebar ? (<GiHamburgerMenu />) : (<GrClose />) }
+          {!sidebar ? <GiHamburgerMenu /> : <GrClose />}
         </button>
       </div>
     </div>
