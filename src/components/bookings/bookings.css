@@ -22,7 +22,7 @@
 --font-1: 'Roboto', sans-serif;
 }
 
-.container {
+.booking-container {
     background-image: url(../../assets/images/background1.jpg);
     background-size: cover;
     width: 100%;
@@ -196,10 +196,15 @@
     }
   }
   
+  .loading-gif {
+    margin: auto;
+    width: 60px;
+  }
+
   @media (min-width: 768px) {
-    .container {
+    .booking-container {
       height: 100vh;
-      /* background-size: contain; */
+      margin-left: 100px;
     }
   
     .booking-buttons-div {
