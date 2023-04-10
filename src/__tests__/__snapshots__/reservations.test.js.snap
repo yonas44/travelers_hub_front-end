@@ -25,6 +25,7 @@ exports[`Reservation component renders It matches the snapshot 1`] = `
       </option>
     </select>
     <input
+      data-testid="search-bar"
       id="search-bar"
       onChange={[Function]}
       placeholder="Search reservations..."
