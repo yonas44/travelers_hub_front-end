@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getToken } from '../auth/auth';
 
 export const postReservations = createAsyncThunk(
     'reservations',
@@ -7,7 +8,7 @@ export const postReservations = createAsyncThunk(
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: localStorage.getItem('token'),
+          Authorization: getToken(),
         },
         body: JSON.stringify(object),
       });

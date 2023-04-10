@@ -6,13 +6,14 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { postReservations } from '../../redux/reservations/postReservations';
 import { fetchPackages } from '../../redux/packageSlice';
 import { getToken } from '../../redux/auth/auth';
-import loading from '../images/loading-icon.gif';
+// import loading from '../../images/loading-icon.gif';
 
 const BookingForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const packages = useSelector((state) => state.flightpackage);
-  const error = useSelector((state) => state.error);
+  console.log(packages);
+  // const error = useSelector((state) => state.error);
   const location = useLocation();
   const flightpackage = location.state;
   let initialSelection;
@@ -33,8 +34,9 @@ const BookingForm = () => {
       start_time: startDate.toString(),
       end_time: endDate.toString(),
       package_id: packages[selectedPackage - 1].id,
-      user_id: 1,
+    
     };
+    // user_id: 1,
     
     dispatch(postReservations(postObject));
     navigate('/reservations');
@@ -52,7 +54,7 @@ const BookingForm = () => {
         <p className="form-title form-title-1">Collect Moments,</p>
         <p className="form-title form-title-2">Not Things</p>
       </div>
-      { error === 'succeeded' ? (
+     
       <form className="booking-form" onSubmit={handleSubmit}>
         <div className="start-date">
           <DatePicker
@@ -78,16 +80,16 @@ const BookingForm = () => {
 
           <div className="booking-buttons-div">
             <select value={selectedPackage} onChange={handleSelectChange}>
-              {packages.map((item) => (
+              {packages.loading ? (<p>loading...</p>) : (packages.flightpackage.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.title}
                 </option>
-              ))}
+              )))}
             </select>
             <input className="form-button" type="submit" value="Submit" />
           </div>
       </form>
-      ) : <img className="loading-gif" src={loading} alt="loading" /> }
+    
     </div>
   );
 };
