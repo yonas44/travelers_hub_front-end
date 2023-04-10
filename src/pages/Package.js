@@ -17,7 +17,6 @@ const Package = () => {
   const style = {
     font: 'text-[17px] text-[#000] font-extrabold',
   };
-
   return (
     <section>
       <div className="grid md:ml-[320px] m-[10px] md:grid-cols-3 gap-2">
@@ -25,7 +24,7 @@ const Package = () => {
           <img className="loading_giphy" alt="loading-giphy" src={loading} />
         ) : (
           packages.flightpackage.map((flight) => (
-            <div key={flight.id}>
+            <div className="bg-[#fff] h-full" key={flight.id}>
               <Link className="no-underline" state={flight} to="/details">
                 <small className="absolute text-[#fff] flight_bool m-2 rounded-md bg-[#237bad]">
                   {flight.flight ? (
@@ -46,8 +45,8 @@ const Package = () => {
                     src={flight.photo}
                   />
                 </div>
-                <div className="bg-[#fff] p-[15px] packages">
-                  <div className="flex items-center justify-between">
+                <div className="p-[15px]">
+                  <div className="flex flex-wrap items-center justify-between">
                     <h1 className={style.font} key={flight.id}>
                       {flight.title}
                     </h1>
