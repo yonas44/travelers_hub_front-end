@@ -1,4 +1,4 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../redux/configureStore';
 import Package from '../pages/Package';
@@ -9,9 +9,9 @@ describe('Packages', () => {
       <Provider store={store}>
         <Package />
       </Provider>,
-    )
+    );
     screen.getByRole('img', {
-      name: /loading-giphy/i
-    })
-  })
-})
+      name: /loading-giphy/i,
+    });
+  });
+});

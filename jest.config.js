@@ -1,6 +1,6 @@
 module.exports = {
   // ... other config options ...
   transform: {
-    "^.+\\.jsx?$": "babel-jest"
-  }
+    '^.+\\.jsx?$': 'babel-jest',
+  },
 };
