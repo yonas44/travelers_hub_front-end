@@ -21,7 +21,7 @@ export default function Login() {
 
   if (success) {
     dispatch(resetStateAndKeepFlash());
-    navigate('/sign_in');
+    navigate('/');
   }
 
   useEffect(() => {
@@ -78,7 +78,9 @@ export default function Login() {
           </form>
         </div>
         <div className="card-footer">
-          <button type="submit" className="btn btn-primary" onClick={submit}>Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={submit}>
+            Submit
+          </button>
         </div>
       </div>
       <p className="mt-3">

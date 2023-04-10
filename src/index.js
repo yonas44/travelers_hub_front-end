@@ -5,6 +5,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 // eslint-disable-next-line
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 import store from './redux/configureStore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,3 +18,5 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>,
 );
+
+reportWebVitals();

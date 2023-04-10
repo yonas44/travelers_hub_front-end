@@ -7,6 +7,7 @@ import Package from './pages/Package';
 import PackageDetails from './components/PackageDetails';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import Reservations from './components/reservations/reservations';
 
 const App = () => {
   const style = {
@@ -18,21 +19,20 @@ const App = () => {
   };
   return (
     <>
-      <body>
-        <Navbar handleSidebar={handleSidebar} sidebar={sidebar} />
-        <main className={style.main}>
-          <Sidebar sidebar={sidebar} />
-          <div className="main-container">
-            <Routes>
-              <Route path="/booking" element={<BookingPage />} />
-              <Route path="/" element={<Package />} />
-              <Route path="/sign_up" element={<Register />} />
-              <Route path="/sign_in" element={<Login />} />
-              <Route path="/details" element={<PackageDetails />} />
-            </Routes>
-          </div>
-        </main>
-      </body>
+      <Navbar handleSidebar={handleSidebar} sidebar={sidebar} />
+      <main className={style.main}>
+        <Sidebar sidebar={sidebar} />
+        <div className="main-container col-12">
+          <Routes>
+            <Route path="/booking" element={<BookingPage />} />
+            <Route path="/" element={<Package />} />
+            <Route path="/sign_up" element={<Register />} />
+            <Route path="/sign_in" element={<Login />} />
+            <Route path="/details" element={<PackageDetails />} />
+            <Route path="/reservations" element={<Reservations />} />
+          </Routes>
+        </div>
+      </main>
     </>
   );
 };
