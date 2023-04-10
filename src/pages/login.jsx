@@ -37,7 +37,7 @@ export default function Login() {
     }
 
     dispatch(cleanFlash());
-  }, [errors, message, dispatch]);
+  }, [errors, message, dispatch, navigate]);
 
   return (
     <div className="h-100 d-flex flex-column align-items-center justify-content-center">

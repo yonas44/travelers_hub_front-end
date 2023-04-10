@@ -1,7 +1,6 @@
-import {useState} from 'react';
-import {Route, Routes} from 'react-router-dom';
-import {BrowserRouter} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { useState } from 'react';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import store from './redux/configureStore';
 import Register from './pages/register';
 import Login from './pages/login';
@@ -22,16 +21,16 @@ const App = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <Navbar handleSidebar={handleSidebar} sidebar={sidebar}/>
+        <Navbar handleSidebar={handleSidebar} sidebar={sidebar} />
         <main className={style.main}>
-          <Sidebar sidebar={sidebar}/>
+          <Sidebar sidebar={sidebar} />
           <div className="main-container col-12 h-100">
             <Routes>
-              <Route path="/" element={<Package/>}/>
-              <Route path="/sign_up" element={<Register/>}/>
-              <Route path="/sign_in" element={<Login/>}/>
-              <Route path="/details" element={<PackageDetails/>}/>
-              <Route path="/reservations" element={<Reservations/>}/>
+              <Route path="/" element={<Package />} />
+              <Route path="/sign_up" element={<Register />} />
+              <Route path="/sign_in" element={<Login />} />
+              <Route path="/details" element={<PackageDetails />} />
+              <Route path="/reservations" element={<Reservations />} />
             </Routes>
           </div>
         </main>

@@ -1,18 +1,18 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import App from '../../App';
 
 describe('Authentication features', () => {
   it('User can register', async () => {
     window.fetch = jest.fn().mockResolvedValue({
-      json: () => Promise.resolve({success: true, message: 'Registered successfully'}),
+      json: () => Promise.resolve({ success: true, message: 'Registered successfully' }),
       ok: true,
     });
 
     toast.success = jest.fn();
 
-    render(<App/>);
+    render(<App />);
     await userEvent.click(screen.getByText('Register'));
     userEvent.type(screen.getByLabelText('Username'), 'test');
     userEvent.type(screen.getByLabelText('Password'), 'test');
@@ -24,16 +24,16 @@ describe('Authentication features', () => {
 
   it('User can login', async () => {
     window.fetch = jest.fn().mockResolvedValue({
-      json: () => Promise.resolve({success: true, message: 'Logged in successfully', resource: {id: 1}}),
+      json: () => Promise.resolve({ success: true, message: 'Logged in successfully', resource: { id: 1 } }),
       ok: true,
       headers: {
-        get: (key) => 'Bearer token'
-      }
+        get: (key) => key,
+      },
     });
 
     toast.success = jest.fn();
 
-    render(<App/>);
+    render(<App />);
     await userEvent.click(screen.getByText('Register'));
     await userEvent.click(screen.getByText('Sign in'));
     userEvent.type(screen.getByLabelText('Username'), 'test');
