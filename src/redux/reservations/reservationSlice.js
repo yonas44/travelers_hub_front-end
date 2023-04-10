@@ -25,23 +25,37 @@ const reservationSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getReservations.pending, (state) => ({
+        ...state,
+        pending: true,
+      }))
       .addCase(getReservations.fulfilled, (state, action) => {
         if (action.payload.sucess) {
-          return { ...state, pending: false, data: action.payload.data };
+          if (action.payload.message) {
+            return {
+              ...state,
+              pending: false,
+              err: '',
+              message: action.payload.message,
+              data: [],
+            };
+          }
+          return {
+            ...state,
+            pending: false,
+            err: '',
+            message: '',
+            data: action.payload.data,
+          };
         }
-        return {
-          ...state,
-          pending: false,
-          message: action.payload.message,
-          data: [],
-        };
+        return { ...state, error: action.payload.err };
       })
       .addCase(getReservations.rejected, (state, action) => ({
         ...state,
         pending: false,
         err: action.payload.message,
       }))
-      .addCase(getReservations.pending, (state) => ({
+      .addCase(deleteReservation.pending, (state) => ({
         ...state,
         pending: true,
       }))
@@ -51,10 +65,17 @@ const reservationSlice = createSlice({
             ...state,
             pending: false,
             message: action.payload.message,
+            err: '',
             change: !state.change,
           };
         }
-        return { ...state, pending: false, message: action.payload.error };
+        return {
+          ...state,
+          pending: false,
+          err: action.payload.error,
+          message: '',
+          change: !state.change,
+        };
       });
   },
 });

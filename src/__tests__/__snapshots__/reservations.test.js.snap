@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reservation component renders It matches the snapshot 1`] = `
+<main
+  className="reservation-main"
+>
+  <p
+    className="removed-message "
+  />
+  <p
+    className="removed-message-error "
+  />
+  <div
+    className="filter-options"
+  >
+    <select
+      id="filter-by"
+      onChange={[Function]}
+    >
+      <option>
+        All
+      </option>
+      <option>
+        My
+      </option>
+    </select>
+    <input
+      id="search-bar"
+      onChange={[Function]}
+      placeholder="Search reservations..."
+    />
+  </div>
+  <section
+    className="reservations-holder"
+  >
+    <p>
+      There are no bookings to display
+    </p>
+  </section>
+</main>
+`;

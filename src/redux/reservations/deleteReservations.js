@@ -15,7 +15,7 @@ const deleteReservation = createAsyncThunk('deleteReservation', async (id) => {
   if (response.ok) {
     return { sucess: true, message: data.message };
   }
-  return { sucess: false, error: 'There was an error' };
+  return { sucess: false, error: data.error };
 });
 
 export default deleteReservation;

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FilterOptions from '../filterOptions';
 import './reservations.css';
-import load from '../../assets/load.gif';
+import load from '../../images/loading-icon.gif';
 import Reservation from './singleReservation';
 import getReservations from '../../redux/reservations/getReservations';
 
@@ -12,6 +12,7 @@ const Reservations = () => {
   const dispatch = useDispatch();
   const [current, setCurrent] = useState();
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   const allBookings = useSelector((state) => state.reservations);
   const bookings = allBookings.data.filter((booking) => {
@@ -30,11 +31,13 @@ const Reservations = () => {
 
   useEffect(() => {
     if (!sessionStorage.getItem('current')) navigate('/sign_in');
-    setCurrent(sessionStorage.getItem('current'));
-    dispatch(getReservations());
-    setMessage(allBookings.message);
+    else {
+      setCurrent(sessionStorage.getItem('current'));
+      dispatch(getReservations());
+      setMessage(allBookings.message);
+      setError(allBookings.err);
+    }
   }, [allBookings.change]);
-  console.log(bookings);
 
   return (
     <main className="reservation-main">
@@ -45,6 +48,7 @@ const Reservations = () => {
       ) : (
         <>
           <p className={`removed-message ${message && 'slide'}`}>{message}</p>
+          <p className={`removed-message-error ${error && 'slide'}`}>{error}</p>
           <FilterOptions />
           <section className="reservations-holder">
             {bookings.length > 0 ? (
@@ -60,12 +64,11 @@ const Reservations = () => {
                 />
               ))
             ) : (
-              <p>{allBookings.message}</p>
+              <p>{allBookings.message || 'There are no bookings to display'}</p>
             )}
           </section>
         </>
       )}
-      <Outlet />
     </main>
   );
 };

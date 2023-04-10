@@ -13,7 +13,7 @@ const getReservations = createAsyncThunk('reservations', async () => {
 
     const data = await response.json();
     if (data.message) {
-      return { sucess: false, message: data.message };
+      return { sucess: true, message: data.message };
     }
 
     return { sucess: true, data };
