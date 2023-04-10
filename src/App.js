@@ -1,8 +1,8 @@
-import BookingPage from './pages/BookingPage';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Register from './pages/register';
 import Login from './pages/login';
+import BookingPage from './pages/BookingPage';
 import Package from './pages/Package';
 import PackageDetails from './components/PackageDetails';
 import Navbar from './components/Navbar';

@@ -12,7 +12,7 @@ const Sidebar = ({ sidebar }) => {
         <h1 className={style.text}>Travellers Hub</h1>
         <ul className="mt-[20px]">
           <Link to="/"><li className={style.list}>Home</li></Link>
-          <li className={style.list}>Booking</li>
+          <Link to="/booking"><li className={style.list}>Booking</li></Link>
           <li className={style.list}>Promotions</li>
           <li className={style.list}>Reservations</li>
           <li className={style.list}>About</li>
