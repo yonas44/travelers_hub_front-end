@@ -14,6 +14,8 @@ const Reservations = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
+  const { user } = useSelector((state) => state.auth);
+
   const allBookings = useSelector((state) => state.reservations);
   const bookings = allBookings.data.filter((booking) => {
     if (allBookings.selected === 'All') {
@@ -30,14 +32,14 @@ const Reservations = () => {
   });
 
   useEffect(() => {
-    if (!sessionStorage.getItem('current')) navigate('/sign_in');
+    if (!sessionStorage.getItem('user')) navigate('/sign_in');
     else {
-      setCurrent(sessionStorage.getItem('current'));
+      setCurrent(JSON.parse(sessionStorage.getItem('current')).id);
       dispatch(getReservations());
       setMessage(allBookings.message);
       setError(allBookings.err);
     }
-  }, [allBookings.change]);
+  }, [allBookings.change, user]);
 
   return (
     <main className="reservation-main">

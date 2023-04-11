@@ -42,7 +42,7 @@ export const signin = createAsyncThunk(
 
     if (response.ok) {
       setToken(response.headers.get('Authorization'));
-      sessionStorage.setItem('current', data.resource.id);
+      sessionStorage.setItem('current', JSON.stringify(data.resource));
     }
 
     if (!response.ok) {
@@ -91,6 +91,7 @@ export const signout = createAsyncThunk(
 
     if (response.ok) {
       removeToken();
+      sessionStorage.removeItem('current');
     }
 
     if (!response.ok) {

@@ -57,7 +57,8 @@ const server = setupServer(...handlers);
 // Enable API mocking before tests.
 beforeAll(() => {
   server.listen();
-  sessionStorage.setItem('current', 2);
+  sessionStorage.setItem('user', JSON.stringify({ token: 'sometoken_here' }));
+  sessionStorage.setItem('current', JSON.stringify({ id: 2 }));
 });
 
 // Reset any runtime request handlers we may add during the tests.
@@ -66,6 +67,7 @@ afterEach(() => server.resetHandlers());
 // Disable API mocking after the tests are done.
 afterAll(() => {
   server.close();
+  sessionStorage.removeItem('user');
   sessionStorage.removeItem('current');
 });
 

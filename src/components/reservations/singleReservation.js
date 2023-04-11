@@ -93,7 +93,7 @@ Reservation.defaultProps = {
 };
 
 Reservation.propTypes = {
-  current: PropTypes.string,
+  current: PropTypes.number,
   packageImage: PropTypes.string,
   bookingAuthorId: PropTypes.number,
   bookingId: PropTypes.number,

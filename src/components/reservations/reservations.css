@@ -53,7 +53,8 @@
   width: fit-content;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  position: absolute;
+  top: 10px;
+  position: fixed;
   right: -100%;
   color: white;
   visibility: hidden;
@@ -135,7 +136,7 @@
   display: flex;
   margin-right: 10px;
   gap: 10px;
-  justify-content: end;
+  justify-content: flex-end;
   height: max-content;
   position: absolute;
   right: 10px;
@@ -149,41 +150,6 @@
   color: red;
   font-size: 1.4rem;
   cursor: pointer;
-}
-
-.edit-wrapper {
-  position: fixed;
-  width: 100vw;
-  top: 0;
-  z-index: 3;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-}
-
-.edit-reservation {
-  margin: auto;
-  color: black;
-  height: 500px;
-  padding: 10px;
-  width: 100%;
-  background-color: white;
-}
-
-.edit-top-section {
-  display: flex;
-  gap: 10px;
-}
-
-.edit-top-section img {
-  width: 150px;
-}
-
-.edit-right-section {
-  display: flex;
-  gap: 10px;
-  align-items: start;
-  flex-direction: column;
 }
 
 #location {
