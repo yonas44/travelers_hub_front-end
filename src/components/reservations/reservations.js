@@ -34,7 +34,7 @@ const Reservations = () => {
     dispatch(getReservations());
     setMessage(allBookings.message);
   }, [allBookings.change]);
-  console.log(bookings);
+  // console.log(bookings);
 
   return (
     <main className="reservation-main">
