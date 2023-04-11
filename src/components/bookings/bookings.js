@@ -6,14 +6,11 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { postReservations } from '../../redux/reservations/postReservations';
 import { fetchPackages } from '../../redux/packageSlice';
 import { getToken } from '../../redux/auth/auth';
-// import loading from '../../images/loading-icon.gif';
 
 const BookingForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const packages = useSelector((state) => state.flightpackage);
-  console.log(packages);
-  // const error = useSelector((state) => state.error);
   const location = useLocation();
   const flightpackage = location.state;
   let initialSelection;
@@ -33,10 +30,8 @@ const BookingForm = () => {
     const postObject = {
       start_time: startDate.toString(),
       end_time: endDate.toString(),
-      package_id: packages[selectedPackage - 1].id,
-    
+      package_id: selectedPackage,
     };
-    // user_id: 1,
     
     dispatch(postReservations(postObject));
     navigate('/reservations');
