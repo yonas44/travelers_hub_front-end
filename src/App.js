@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './redux/configureStore';
 import Register from './pages/register';
 import Login from './pages/login';
+import Promotions from './pages/Promotions';
 import BookingPage from './pages/BookingPage';
 import Package from './pages/Package';
 import PackageDetails from './components/PackageDetails';
@@ -29,6 +30,7 @@ const App = () => {
             <Routes>
               <Route path="/booking" element={<BookingPage />} />
               <Route path="/" element={<Package />} />
+              <Route path="/promotions" element={<Promotions />} />
               <Route path="/sign_up" element={<Register />} />
               <Route path="/sign_in" element={<Login />} />
               <Route path="/details" element={<PackageDetails />} />
