@@ -38,13 +38,6 @@ export const signin = createAsyncThunk(
       body: JSON.stringify({ user: payload }),
     });
 
-    const data = await response.json();
-
-    if (response.ok) {
-      setToken(response.headers.get('Authorization'));
-      sessionStorage.setItem('current', JSON.stringify(data.resource));
-    }
-
     if (!response.ok) {
       return rejectWithValue({
         success: response.ok,
@@ -52,6 +45,9 @@ export const signin = createAsyncThunk(
       });
     }
 
+    const data = await response.json();
+    setToken(response.headers.get('Authorization'));
+    sessionStorage.setItem('current', data.resource.id);
     return { success: response.ok, ...data };
   },
 );
