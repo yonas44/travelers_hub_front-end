@@ -46,16 +46,22 @@
   width: 60px;
 }
 
-.removed-message {
+.removed-message,
+.removed-message-error {
   padding: 10px;
   background-color: green;
   width: fit-content;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  position: absolute;
+  top: 10px;
+  position: fixed;
   right: -100%;
   color: white;
   visibility: hidden;
+}
+
+.removed-message-error {
+  background-color: red;
 }
 
 .slide {
@@ -130,7 +136,7 @@
   display: flex;
   margin-right: 10px;
   gap: 10px;
-  justify-content: end;
+  justify-content: flex-end;
   height: max-content;
   position: absolute;
   right: 10px;
@@ -146,41 +152,6 @@
   cursor: pointer;
 }
 
-.edit-wrapper {
-  position: fixed;
-  width: 100vw;
-  top: 0;
-  z-index: 3;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-}
-
-.edit-reservation {
-  margin: auto;
-  color: black;
-  height: 500px;
-  padding: 10px;
-  width: 100%;
-  background-color: white;
-}
-
-.edit-top-section {
-  display: flex;
-  gap: 10px;
-}
-
-.edit-top-section img {
-  width: 150px;
-}
-
-.edit-right-section {
-  display: flex;
-  gap: 10px;
-  align-items: start;
-  flex-direction: column;
-}
-
 #location {
   font-size: 0.9rem;
   color: gray;
@@ -190,6 +161,46 @@
   font-style: italic;
   font-size: 1.2rem;
   color: rgb(179, 3, 3);
+}
+
+/* Delete confirmation */
+
+.delete-confirm-wrapper {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  background: linear-gradient(rgba(0, 0, 0, 0.459), rgba(0, 0, 0, 0.37));
+  backdrop-filter: blur(5px);
+}
+
+.delete-reservation-popop {
+  padding: 30px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.confirm-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.delete-reservation-cancel,
+.delete-reservation-ok {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.delete-reservation-ok {
+  background-color: green;
 }
 
 @media screen and (min-width: 768px) {

@@ -24,6 +24,7 @@ const FilterOptions = () => {
       </select>
       <input
         placeholder="Search reservations..."
+        data-testid="search-bar"
         id="search-bar"
         onChange={handleSearch}
       />
