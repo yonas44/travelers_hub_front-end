@@ -41,7 +41,7 @@ const Promotions = () => {
                             ''
                           )}
                         </small>
-                        <small className="absolute ml-[20%] flight_bool mt-2 rounded-md text-[#fff] bg-[#c71310]">
+                        <small className="absolute ml-[70%] md:ml-[20%] flight_bool mt-2 rounded-md text-[#fff] bg-[#c71310]">
                           {
                             flight.promotion > 10 ? (
                               <p className="px-[3px]">
