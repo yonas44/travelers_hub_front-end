@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { cleanFlash, resetStateAndKeepFlash, signup } from '../redux/auth/auth';
+import { resetStateAndKeepFlash, signup } from '../redux/auth/auth';
 import { flash } from '../redux/flash/flash';
 
 export default function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const { success, message, errors } = useSelector((state) => state.auth);
+  const { success } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -29,20 +29,6 @@ export default function Register() {
     dispatch(resetStateAndKeepFlash());
     navigate('/sign_in');
   }
-
-  useEffect(() => {
-    if (errors) {
-      errors.forEach((error) => {
-        flash('error', error);
-      });
-    }
-
-    if (message) {
-      flash('success', message);
-    }
-
-    dispatch(cleanFlash());
-  }, [errors, message, dispatch]);
 
   return (
     <div className="h-100 d-flex flex-column align-items-center justify-content-center">
@@ -97,7 +83,9 @@ export default function Register() {
           </form>
         </div>
         <div className="card-footer">
-          <button type="submit" className="btn btn-primary" onClick={submit}>Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={submit}>
+            Submit
+          </button>
         </div>
       </div>
       <p className="mt-3">

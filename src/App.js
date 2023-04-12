@@ -1,27 +1,30 @@
 import { useState } from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import store from './redux/configureStore';
 import Register from './pages/register';
 import Login from './pages/login';
-import BookingPage from './pages/BookingPage';
 import Package from './pages/Package';
 import PackageDetails from './components/PackageDetails';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Reservations from './components/reservations/reservations';
+import BookingPage from './pages/BookingPage';
 
 const App = () => {
   const style = {
-    main: 'flex items-start h-100',
+    main: 'flex items-start',
   };
   const [sidebar, setSidebar] = useState(false);
   const handleSidebar = () => {
     setSidebar(!sidebar);
   };
+
   return (
     <BrowserRouter>
       <Provider store={store}>
+        <ToastContainer />
         <Navbar handleSidebar={handleSidebar} sidebar={sidebar} />
         <main className={style.main}>
           <Sidebar sidebar={sidebar} />

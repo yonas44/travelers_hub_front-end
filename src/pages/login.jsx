@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-import { cleanFlash, resetStateAndKeepFlash, signin } from '../redux/auth/auth';
-import { flash } from '../redux/flash/flash';
+import { resetStateAndKeepFlash, signin } from '../redux/auth/auth';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { success, errors, message } = useSelector((state) => state.auth);
+  const { success } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,23 +22,8 @@ export default function Login() {
     navigate('/');
   }
 
-  useEffect(() => {
-    if (errors) {
-      errors.forEach((error) => {
-        flash('error', error);
-      });
-    }
-
-    if (message) {
-      flash('success', message);
-    }
-
-    dispatch(cleanFlash());
-  }, [errors, message, dispatch]);
-
   return (
     <div className="h-100 d-flex flex-column align-items-center justify-content-center">
-      <ToastContainer />
       <div className="card w-25" style={{ minWidth: 300 }}>
         <div className="card-header text-center">
           <h1>Sign in</h1>

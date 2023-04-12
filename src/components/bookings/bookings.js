@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-multi-date-picker';
 import './bookings.css';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { postReservations } from '../../redux/reservations/postReservations';
+import postReservations from '../../redux/reservations/postReservations';
 import { fetchPackages } from '../../redux/packageSlice';
 import { getToken } from '../../redux/auth/auth';
 
@@ -17,7 +17,11 @@ const BookingForm = () => {
   const flightpackage = location.state;
   let initialSelection;
 
-  { flightpackage ? initialSelection = flightpackage.id : initialSelection = 1; }
+  {
+    flightpackage
+      ? (initialSelection = flightpackage.id)
+      : (initialSelection = 1);
+  }
 
   const [startDate, setStartDate] = useState('Choose Start Date');
   const [endDate, setEndDate] = useState('Choose End Date');
@@ -77,16 +81,19 @@ const BookingForm = () => {
 
         <div className="booking-buttons-div">
           <select value={selectedPackage} onChange={handleSelectChange}>
-            {packages.loading ? (<p>loading...</p>) : (packages.flightpackage.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.title}
-              </option>
-            )))}
+            {packages.loading ? (
+              <p>loading...</p>
+            ) : (
+              packages.flightpackage.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.title}
+                </option>
+              ))
+            )}
           </select>
           <input className="form-button" type="submit" value="Submit" />
         </div>
       </form>
-
     </div>
   );
 };
