@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './redux/configureStore';
 import Register from './pages/register';
 import Login from './pages/login';
+import BookingPage from './pages/BookingPage';
 import Package from './pages/Package';
 import PackageDetails from './components/PackageDetails';
 import Navbar from './components/Navbar';
@@ -26,6 +27,7 @@ const App = () => {
           <Sidebar sidebar={sidebar} />
           <div className="main-container col-12 h-100">
             <Routes>
+              <Route path="/booking" element={<BookingPage />} />
               <Route path="/" element={<Package />} />
               <Route path="/sign_up" element={<Register />} />
               <Route path="/sign_in" element={<Login />} />
