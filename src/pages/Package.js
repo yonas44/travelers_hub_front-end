@@ -38,6 +38,11 @@ const Package = () => {
                     ''
                   )}
                 </small>
+                <small className="absolute">
+                  {
+                    flight.promotion > 10 ? (<p>{flight.promotion}</p>) : ('')
+                  }
+                </small>
                 <div>
                   <img
                     className="w-full"

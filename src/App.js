@@ -24,7 +24,7 @@ const App = () => {
       <Provider store={store}>
         <Navbar handleSidebar={handleSidebar} sidebar={sidebar} />
         <main className={style.main}>
-          <Sidebar sidebar={sidebar} />
+          <Sidebar sidebar={sidebar} handleSidebar={handleSidebar} />
           <div className="main-container col-12 h-100">
             <Routes>
               <Route path="/booking" element={<BookingPage />} />
