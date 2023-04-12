@@ -38,9 +38,21 @@ const Package = () => {
                     ''
                   )}
                 </small>
+                <small className="absolute ml-[20%] flight_bool mt-2 rounded-md text-[#fff] bg-[#c71310]">
+                  {
+                    flight.promotion > 10 ? (
+                      <p className="px-[3px]">
+                        {flight.promotion}
+                        %
+                      </p>
+                    ) : (
+                      ''
+                    )
+                  }
+                </small>
                 <div>
                   <img
-                    className="w-full"
+                    className="w-full h-[280px]"
                     alt={flight.title}
                     src={flight.photo}
                   />
