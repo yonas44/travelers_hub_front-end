@@ -55,7 +55,7 @@ const Promotions = () => {
                         </small>
                         <div>
                           <img
-                            className="w-full"
+                            className="w-full h-[280px]"
                             alt={flight.title}
                             src={flight.photo}
                           />
@@ -75,7 +75,7 @@ const Promotions = () => {
                       </div>
                     ) : (
                       <div>
-                        <img alt="coming soon" src={comingSoon} />
+                        <img alt="coming soon" className="h-[280px]" src={comingSoon} />
                         <div className="flex flex-col justify-center items-center my-4">
                           <p className="text-center">{flight.title}</p>
                           <p className="text-[#c71310]">Promotion coming soon</p>
