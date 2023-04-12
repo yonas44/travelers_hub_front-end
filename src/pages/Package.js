@@ -52,7 +52,7 @@ const Package = () => {
                 </small>
                 <div>
                   <img
-                    className="w-full"
+                    className="w-full h-[280px]"
                     alt={flight.title}
                     src={flight.photo}
                   />
