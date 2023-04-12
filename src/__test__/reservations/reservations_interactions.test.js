@@ -3,8 +3,9 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import Reservations from '../components/reservations/reservations';
-import store from '../redux/configureStore';
+import Reservations from '../../components/reservations/reservations';
+import store from '../../redux/configureStore';
+import '@testing-library/jest-dom';
 
 // Mock API calls
 const handlers = [

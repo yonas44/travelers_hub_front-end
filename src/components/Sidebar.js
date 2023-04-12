@@ -7,7 +7,6 @@ import {
   AiOutlineLogout,
   AiOutlineShoppingCart,
 } from 'react-icons/ai';
-import { ImNotification } from 'react-icons/im';
 import { BsFillBagDashFill } from 'react-icons/bs';
 import { MdOutlineRoundaboutRight } from 'react-icons/md';
 import airline from '../images/airline-gif.gif';
@@ -43,12 +42,6 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
             <li className={style.list}>
               <AiOutlineShoppingCart />
               Booking
-            </li>
-          </Link>
-          <Link className={style.link} onClick={handleSidebar} to="/promotions">
-            <li className={style.list}>
-              <ImNotification />
-              Promotions
             </li>
           </Link>
           <Link

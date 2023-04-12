@@ -2,8 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import store from '../redux/configureStore';
-import Reservations from '../components/reservations/reservations';
+import store from '../../redux/configureStore';
+import Reservations from '../../components/reservations/reservations';
+import '@testing-library/jest-dom';
 
 describe('Reservation component renders', () => {
   it('renders the reservations', () => {

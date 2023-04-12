@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import deleteReservation from './deleteReservations';
 import getReservations from './getReservations';
+import postReservations from './postReservations';
 
 const reservationSlice = createSlice({
   name: 'reservations',
@@ -59,6 +60,20 @@ const reservationSlice = createSlice({
         ...state,
         pending: true,
       }))
+      .addCase(postReservations.pending, (state) => ({
+        ...state,
+        pending: true,
+      }))
+      .addCase(postReservations.fulfilled, (state, action) => {
+        if (action.payload.sucess) {
+          return { ...state, pending: false, message: action.payload.message };
+        }
+        return {
+          ...state,
+          pending: false,
+          err: action.payload.err,
+        };
+      })
       .addCase(deleteReservation.fulfilled, (state, action) => {
         if (action.payload.sucess) {
           return {

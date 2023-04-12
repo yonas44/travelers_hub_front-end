@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
 import { resetStateAndKeepFlash, signin } from '../redux/auth/auth';
 
 export default function Login() {
@@ -25,7 +24,6 @@ export default function Login() {
 
   return (
     <div className="h-100 d-flex flex-column align-items-center justify-content-center">
-      <ToastContainer />
       <div className="card w-25" style={{ minWidth: 300 }}>
         <div className="card-header text-center">
           <h1>Sign in</h1>
