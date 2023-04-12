@@ -33,7 +33,6 @@ export default function Login() {
 
     if (message) {
       flash('success', message);
-      navigate('/');
     }
 
     dispatch(cleanFlash());
@@ -42,7 +41,7 @@ export default function Login() {
   return (
     <div className="h-100 d-flex flex-column align-items-center justify-content-center">
       <ToastContainer />
-      <div className="card w-25">
+      <div className="card w-25" style={{ minWidth: 300 }}>
         <div className="card-header text-center">
           <h1>Sign in</h1>
         </div>

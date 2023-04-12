@@ -33,8 +33,7 @@ const Reservations = () => {
     setCurrent(sessionStorage.getItem('current'));
     dispatch(getReservations());
     setMessage(allBookings.message);
-  }, [allBookings.change]);
-  // console.log(bookings);
+  }, [allBookings.change, allBookings.message, navigate, dispatch]);
 
   return (
     <main className="reservation-main">
