@@ -28,7 +28,7 @@ const App = () => {
           <div className="main-container col-12 h-100">
             <Routes>
               <Route path="/booking" element={<BookingPage />} />
-            <Route path="/" element={<Package />} />
+              <Route path="/" element={<Package />} />
               <Route path="/sign_up" element={<Register />} />
               <Route path="/sign_in" element={<Login />} />
               <Route path="/details" element={<PackageDetails />} />
