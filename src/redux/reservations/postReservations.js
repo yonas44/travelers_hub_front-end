@@ -4,7 +4,7 @@ import { getToken } from '../auth/auth';
 const postReservations = createAsyncThunk(
   'postReservations',
   async (object) => {
-    const response = await fetch('http://127.0.0.1:3000/booking', {
+    const response = await fetch('http://127.0.0.1:3000/bookings/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

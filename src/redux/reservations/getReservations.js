@@ -3,7 +3,7 @@ import { getToken } from '../auth/auth';
 
 const getReservations = createAsyncThunk('getReservations', async () => {
   try {
-    const response = await fetch('http://127.0.0.1:3000/bookings', {
+    const response = await fetch('http://127.0.0.1:3000/bookings/', {
       method: 'get',
       headers: {
         'content-type': 'application/json',
@@ -14,13 +14,10 @@ const getReservations = createAsyncThunk('getReservations', async () => {
     });
 
     const data = await response.json();
-    if (data.message) {
-      return { sucess: true, message: data.message };
+    if (response.ok) {
+      return { sucess: true, data };
     }
-    if (data.errors) {
-      return { sucess: false, err: 'Session has expired!' };
-    }
-    return { sucess: true, data };
+    return { sucess: false, err: 'Session has expired!' };
   } catch (err) {
     return { sucess: false, err };
   }

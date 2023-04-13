@@ -3,13 +3,12 @@ import { getToken } from '../auth/auth';
 
 const deletePackage = createAsyncThunk('deletePackage', async (id) => {
   try {
-    const response = await fetch('http://127.0.0.1:3000/package', {
+    const response = await fetch(`http://127.0.0.1:3000/packages/${id}`, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',
         Authorization: getToken(),
       },
-      body: JSON.stringify({ id }),
     });
 
     const data = await response.json();
