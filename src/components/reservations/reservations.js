@@ -65,7 +65,7 @@ const Reservations = () => {
                 />
               ))
             ) : (
-              <p>{allBookings.message || 'There are no bookings to display'}</p>
+              <p>There are no bookings to display</p>
             )}
           </section>
         </>
