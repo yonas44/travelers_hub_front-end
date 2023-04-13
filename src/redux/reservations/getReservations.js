@@ -20,7 +20,10 @@ const getReservations = createAsyncThunk('getReservations', async () => {
       return { success: true, message: data.message };
     }
 
-    return { success: true, data };
+    if (data.errors) {
+      return { sucess: false, err: 'Session has expired!' };
+    }
+    return { sucess: true, data };
   } catch (err) {
     return { success: false, err };
   }

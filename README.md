@@ -127,7 +127,7 @@ To run the project, execute the following command:
 👤 **Oti Ifeanyi**
 
 - GitHub: [@ifeanyi305](https://github.com/ifeanyi305)
-- Twitter: [@ifeanyi305](https://twitter.com/ifeanyi2020)
+- Twitter: [@ifeanyi305](https://twitter.com/Otiifeanyi2020)
 - LinkedIn: [oti joseph](https://www.linkedin.com/in/oti-joseph-ifeanyi/)
 
 👤 **Selma Hamutenya**

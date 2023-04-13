@@ -9,6 +9,7 @@ import loading from '../images/loading-icon.gif';
 import DeleteModal from '../components/deleteModal';
 import '../components/packages/packages.css';
 import { flash } from '../redux/flash/flash';
+import noContent from '../images/no-content.png';
 
 const Package = () => {
   const dispatch = useDispatch();
@@ -35,71 +36,79 @@ const Package = () => {
   return (
     <>
       <section>
-        <div className="grid md:ml-[320px] m-[10px] md:grid-cols-3 gap-2">
+        <div className="grid md:ml-[320px] m-[10px] md:grid-cols-3 gap-2 relative">
           {packages.loading ? (
             <img className="loading_giphy" alt="loading-giphy" src={loading} />
           ) : (
-            packages.flightpackage.map((flight) => (
-              <div className="bg-[#fff] h-full package-info" key={flight.id}>
-                <Link className="no-underline" state={flight} to="/details">
-                  <small className="absolute text-[#fff] flight_bool m-2 rounded-md bg-[#237bad]">
-                    {flight.flight ? (
-                      <p className="flex gap-2 px-[3px] items-center">
-                        Flight: Included
-                        <span>
-                          <GiCommercialAirplane />
-                        </span>
-                      </p>
-                    ) : (
-                      ''
-                    )}
-                  </small>
-                  <small className="absolute ml-[80%] flight_bool mt-2 rounded-md text-[#fff] bg-[#c71310]">
-                    {flight.promotion > 10 ? (
-                      <p className="px-[3px]">
-                        {flight.promotion}
-                        %
-                      </p>
-                    ) : (
-                      ''
-                    )}
-                  </small>
-                  <div>
-                    <img
-                      className="w-full h-[280px]"
-                      alt={flight.title}
-                      src={flight.photo}
-                    />
-                  </div>
-                  <div className="p-[15px]">
-                    <div className="flex flex-wrap items-center justify-between">
-                      <h1 className={style.font} key={flight.id}>
-                        {flight.title}
-                      </h1>
-                      <p className={style.text}>
-                        $
-                        {flight.price}
-                      </p>
-                    </div>
-                    <small className={style.text}>{flight.destination}</small>
-                  </div>
-                </Link>
-                {Number(current) === flight.user_id && (
-                  <div className="owner-options">
-                    <button type="button" id="remove-package-btn">
-                      <RiDeleteBin5Fill
-                        data-testid="delete-btn"
-                        className="current-btns"
-                        onClick={() => {
-                          setShow(true);
-                          setId(flight.id);
-                        }}
+            <>
+              {packages.flightpackage.map((flight) => (
+                <div className="bg-[#fff] h-full package-info" key={flight.id}>
+                  <Link className="no-underline" state={flight} to="/details">
+                    <small className="absolute text-[#fff] flight_bool m-2 rounded-md bg-[#237bad]">
+                      {flight.flight ? (
+                        <p className="flex gap-2 px-[3px] items-center">
+                          Flight: Included
+                          <span>
+                            <GiCommercialAirplane />
+                          </span>
+                        </p>
+                      ) : (
+                        ''
+                      )}
+                    </small>
+                    <small className="absolute ml-[80%] flight_bool mt-2 rounded-md text-[#fff] bg-[#c71310]">
+                      {flight.promotion > 10 ? (
+                        <p className="px-[3px]">
+                          {flight.promotion}
+                          %
+                        </p>
+                      ) : (
+                        ''
+                      )}
+                    </small>
+                    <div>
+                      <img
+                        className="w-full h-[280px]"
+                        alt={flight.title}
+                        src={flight.photo}
                       />
-                    </button>
-                  </div>
-                )}
-              </div>
-            ))
+                    </div>
+                    <div className="p-[15px]">
+                      <div className="flex flex-wrap items-center justify-between">
+                        <h1 className={style.font} key={flight.id}>
+                          {flight.title}
+                        </h1>
+                        <p className={style.text}>
+                          $
+                          {flight.price}
+                        </p>
+                      </div>
+                      <small className={style.text}>{flight.destination}</small>
+                    </div>
+                  </Link>
+                  {Number(current) === flight.user_id && (
+                    <div className="owner-options">
+                      <button type="button" id="remove-package-btn">
+                        <RiDeleteBin5Fill
+                          data-testid="delete-btn"
+                          className="current-btns"
+                          onClick={() => {
+                            setShow(true);
+                            setId(flight.id);
+                          }}
+                        />
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+              {!packages.flightpackage.length && (
+                <div className="absolute top-[20px] w-full gap-[5px] flex justify-center items-center">
+                  <img src={noContent} alt="no-content" />
+                  <span>There are no packages currently</span>
+                </div>
+              )}
+            </>
           )}
           {show && <DeleteModal typeOf="package" setShow={setShow} id={Id} />}
         </div>

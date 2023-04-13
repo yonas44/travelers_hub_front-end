@@ -49,7 +49,12 @@ const reservationSlice = createSlice({
             data: action.payload.data,
           };
         }
-        return { ...state, error: action.payload.err };
+        return {
+          ...state,
+          pending: false,
+          err: action.payload.err,
+          message: '',
+        };
       })
       .addCase(getReservations.rejected, (state, action) => ({
         ...state,
