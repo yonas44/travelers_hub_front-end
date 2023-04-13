@@ -72,8 +72,10 @@ A react app that allows users to see traveling packages and book based on their 
 
 ### Key Features <a name="key-features"></a>
 
-- User can see package options and offers.
-- User can book a flight or go for full package.
+- **User can see package options and offers.**
+- **User can register new accounts and login**
+- **User can book a flight or go for full package**
+- **User can add packages and delete them too**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,7 +93,7 @@ In order to run this project you need:
 
 ### Setup
 
-Clone this repository to your desired folder:
+1. Clone this repository to your desired folder:
 
 ```
   git clone https://github.com/yonas44/travelers_hub_front-end.git
@@ -119,10 +121,37 @@ To run the project, execute the following command:
 
 <!-- AUTHORS -->
 
-## 👥 Author <a name="authors"></a>
+## 👥 Authors <a name="authors"></a>
+
+
+👤 **Oti Ifeanyi**
+
+- GitHub: [@ifeanyi305](https://github.com/ifeanyi305)
+- Twitter: [@ifeanyi305](https://twitter.com/ifeanyi2020)
+- LinkedIn: [oti joseph](https://www.linkedin.com/in/oti-joseph-ifeanyi/)
+
+👤 **Selma Hamutenya**
+
+- GitHub: [@SelmaNdapanda](https://github.com/SelmaNdapanda)
+- Twitter: [@SellohBlaq](https://twitter.com/sellohBlaq)
+- LinkedIn: [selma-hamutenya](www.linkedin.com/in/selma-hamutenya)
+
+👤 **Yonas Tesfu**
 
 - GitHub: [@yonas44](https://github.com/yonas44)
 - LinkedIn: [Yonas Tesfu](https://linkedin.com/in/yonas-tesfu)
+
+👤 **Ben Salès**
+
+- GitHub: [@adebsa2401](https://github.com/adebsa2401)
+- Twitter: [@Adebsa3](https://twitter.com/Adebsa3)
+- LinkedIn: [adebsa](https://www.linkedin.com/in/adebsa)
+
+### 👤 Kidist Dinku
+- GitHub: [Ney2](https://github.com/Ney2)
+- Twitter: [@GutaKidist](https://twitter.com/GutaKidist)
+- Linkedin: [Kidist Dinku](https://www.linkedin.com/in/kidist-guta/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
@@ -149,6 +178,11 @@ Feel free to check the [issues page](../../issues/).
 If you like this project...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+- Microverse ❤️ 
+- [Murat Korkmaz on Behance](https://www.behance.net/muratk) the author of the [original design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 
 <!-- LICENSE -->
 

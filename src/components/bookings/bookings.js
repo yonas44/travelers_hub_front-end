@@ -99,7 +99,7 @@ const BookingForm = () => {
 };
 
 export default function Bookings() {
-  const isAuthenticated = getToken;
+  const isAuthenticated = getToken();
 
   if (!isAuthenticated) {
     return <Navigate to="/sign_in" />;
