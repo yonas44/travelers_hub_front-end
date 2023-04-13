@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getToken } from '../auth/auth';
 
+const PACKAGE_URL = `${process.env.REACT_APP_API_ROOT_URL}/packages`;
+
 const addPackage = createAsyncThunk('addPackage', async (info) => {
   try {
-    const response = await fetch('http://127.0.0.1:3000/packages', {
+    const response = await fetch(PACKAGE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

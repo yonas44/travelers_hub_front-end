@@ -31,7 +31,7 @@ const reservationSlice = createSlice({
         pending: true,
       }))
       .addCase(getReservations.fulfilled, (state, action) => {
-        if (action.payload.sucess) {
+        if (action.payload.success) {
           if (action.payload.message) {
             return {
               ...state,
@@ -65,7 +65,7 @@ const reservationSlice = createSlice({
         pending: true,
       }))
       .addCase(postReservations.fulfilled, (state, action) => {
-        if (action.payload.sucess) {
+        if (action.payload.success) {
           return {
             ...state,
             pending: false,
@@ -82,7 +82,7 @@ const reservationSlice = createSlice({
         };
       })
       .addCase(deleteReservation.fulfilled, (state, action) => {
-        if (action.payload.sucess) {
+        if (action.payload.success) {
           return {
             ...state,
             pending: false,
@@ -98,7 +98,12 @@ const reservationSlice = createSlice({
           message: '',
           change: !state.change,
         };
-      });
+      })
+      .addCase('reservations/cleanFlash', (state) => ({
+        ...state,
+        message: null,
+        err: null,
+      }));
   },
 });
 

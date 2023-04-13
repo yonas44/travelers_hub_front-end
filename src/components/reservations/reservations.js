@@ -6,7 +6,7 @@ import './reservations.css';
 import load from '../../images/loading-icon.gif';
 import Reservation from './singleReservation';
 import getReservations from '../../redux/reservations/getReservations';
-import { flash } from '../../redux/flash/flash';
+import { addFlash, flashDisplayAction } from '../../redux/flash/flash';
 
 const Reservations = () => {
   const navigate = useNavigate();
@@ -35,10 +35,12 @@ const Reservations = () => {
     else {
       setCurrent(JSON.parse(sessionStorage.getItem('current')).id);
       dispatch(getReservations());
-      if (allBookings.message) flash('success', allBookings.message);
-      else if (allBookings.err) flash('error', allBookings.err);
+      if (allBookings.message) addFlash('success', allBookings.message)(dispatch);
+      else if (allBookings.err) addFlash('error', allBookings.err)(dispatch);
     }
-  }, [allBookings.change, user]);
+  }, [allBookings.change, user, navigate, dispatch]);
+
+  dispatch(flashDisplayAction());
 
   return (
     <main className="reservation-main">

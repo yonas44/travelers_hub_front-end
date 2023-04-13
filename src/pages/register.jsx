@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { resetStateAndKeepFlash, signup } from '../redux/auth/auth';
+import { signup } from '../redux/auth/auth';
 import { flash } from '../redux/flash/flash';
 
 export default function Register() {
@@ -26,7 +26,6 @@ export default function Register() {
   };
 
   if (success) {
-    dispatch(resetStateAndKeepFlash());
     navigate('/sign_in');
   }
 
@@ -80,10 +79,11 @@ export default function Register() {
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="_password">Confirm Password</label>
             </div>
+            <button type="submit" className="d-none">Submit</button>
           </form>
         </div>
         <div className="card-footer">
-          <button type="submit" className="btn btn-primary" onClick={submit}>
+          <button type="button" className="btn btn-primary" onClick={submit}>
             Submit
           </button>
         </div>

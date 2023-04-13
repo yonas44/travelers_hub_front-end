@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getToken } from '../auth/auth';
 
+const PACKAGE_URL = `${process.env.REACT_APP_API_ROOT_URL}/package`;
+
 const deletePackage = createAsyncThunk('deletePackage', async (id) => {
   try {
-    const response = await fetch('http://127.0.0.1:3000/package', {
+    const response = await fetch(PACKAGE_URL, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',

@@ -1,8 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getToken } from '../auth/auth';
 
+const RESERVATION_URL = `${process.env.REACT_APP_API_ROOT_URL}/booking`;
+
 const deleteReservation = createAsyncThunk('deleteReservation', async (id) => {
-  const response = await fetch('http://127.0.0.1:3000/booking', {
+  const response = await fetch(RESERVATION_URL, {
     method: 'delete',
     headers: {
       'content-type': 'application/json',
