@@ -9,6 +9,7 @@ import {
 } from 'react-icons/ai';
 import { BsFillBagDashFill } from 'react-icons/bs';
 import { MdOutlineRoundaboutRight } from 'react-icons/md';
+import { TbJetpack } from 'react-icons/tb';
 import airline from '../images/airline-gif.gif';
 import { cleanFlash, signout } from '../redux/auth/auth';
 // eslint-disable-next-line
@@ -19,7 +20,7 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
 
   const style = {
     link: 'no-underline',
-    text: 'text-[37px] sidebar_title hidden md:block text-center text-[#1c1cc7] font-extrabold mt-[30%]',
+    text: 'text-[37px] sidebar_title hidden md:block text-center text-[#1c1cc7] font-extrabold mt-[15%]',
     list: 'p-2 mt-[3px] flex items-center gap-2 font-extrabold text-[#103910] bg-[#fff] list',
   };
 
@@ -52,6 +53,12 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
             <li className={style.list}>
               <BsFillBagDashFill />
               Reservations
+            </li>
+          </Link>
+          <Link className={style.link} onClick={handleSidebar} to="/promotions">
+            <li className={style.list}>
+              <TbJetpack />
+              Promotions
             </li>
           </Link>
           <Link className={style.link} onClick={handleSidebar} to="/about">

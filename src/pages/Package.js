@@ -12,15 +12,6 @@ import { flash } from '../redux/flash/flash';
 
 const Package = () => {
   const dispatch = useDispatch();
-  const { message, error, change } = useSelector(
-    (state) => state.flightpackage,
-  );
-
-  const { success } = useSelector((state) => state.auth);
-  const [current] = useState(JSON.parse(sessionStorage.getItem('current'))?.id);
-  const [show, setShow] = useState(false);
-  const [Id, setId] = useState('');
-
   useEffect(() => {
     if (message) flash('success', message);
     else if (error) flash('error', error);
@@ -54,9 +45,16 @@ const Package = () => {
                       ''
                     )}
                   </small>
+                  <small className="absolute ml-[20%] flight_bool mt-2 rounded-md text-[#fff] bg-[#c71310]">
+                    {flight.promotion > 10 ? (
+                      <p className="px-[3px]">{flight.promotion}%</p>
+                    ) : (
+                      ''
+                    )}
+                  </small>
                   <div>
                     <img
-                      className="w-full"
+                      className="w-full h-[280px]"
                       alt={flight.title}
                       src={flight.photo}
                     />
@@ -66,10 +64,7 @@ const Package = () => {
                       <h1 className={style.font} key={flight.id}>
                         {flight.title}
                       </h1>
-                      <p className={style.text}>
-                        $
-                        {flight.price}
-                      </p>
+                      <p className={style.text}>${flight.price}</p>
                     </div>
                     <small className={style.text}>{flight.destination}</small>
                   </div>

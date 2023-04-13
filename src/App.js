@@ -5,6 +5,8 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import store from './redux/configureStore';
 import Register from './pages/register';
 import Login from './pages/login';
+import Promotions from './pages/Promotions';
+import BookingPage from './pages/BookingPage';
 import Package from './pages/Package';
 import PackageDetails from './components/PackageDetails';
 import Navbar from './components/Navbar';
@@ -30,7 +32,7 @@ const App = () => {
         <ToastContainer />
         <Navbar handleSidebar={handleSidebar} sidebar={sidebar} />
         <main className={style.main}>
-          <Sidebar sidebar={sidebar} />
+          <Sidebar sidebar={sidebar} handleSidebar={handleSidebar} />
           <div className="main-container col-12 h-100">
             <Routes>
               <Route path="/booking" element={<BookingPage />} />
