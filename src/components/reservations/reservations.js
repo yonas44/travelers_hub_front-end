@@ -35,9 +35,9 @@ const Reservations = () => {
     else {
       setCurrent(JSON.parse(sessionStorage.getItem('current')).id);
       dispatch(getReservations());
-      if (allBookings.message) flash('success', allBookings.message);
-      else if (allBookings.err) flash('error', allBookings.err);
     }
+    if (allBookings.message) flash('success', allBookings.message);
+    else if (allBookings.err) flash('error', allBookings.err);
   }, [allBookings.change, user]);
 
   return (
