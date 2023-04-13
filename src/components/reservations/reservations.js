@@ -60,6 +60,8 @@ const Reservations = () => {
                   packageTitle={booking.package.title}
                   bookingDestination={booking.package.destination}
                   current={current}
+                  startDate={booking.start_time}
+                  endDate={booking.end_time}
                 />
               ))
             ) : (

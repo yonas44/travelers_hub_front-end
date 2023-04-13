@@ -13,6 +13,8 @@ const Reservation = (props) => {
     current,
     bookingDestination,
     packageTitle,
+    startDate,
+    endDate,
   } = props;
 
   const [show, setShow] = useState(false);
@@ -24,11 +26,16 @@ const Reservation = (props) => {
         {Number(current) === bookingAuthorId && (
           <span id="booking-owner-badge">Owned</span>
         )}
-        <div className="reservation-info">
+        <div className="reservation-info py-4">
           <h3>{packageTitle}</h3>
-          <p>
-            Booked
+          <p className="flex gap-[10px] items-center">
             <GiCheckMark id="check-mark" />
+            Booked on
+            <span className="text-[#959595] italic">{startDate}</span>
+          </p>
+          <p className="flex gap-[8px] items-center">
+            Ends on
+            <span className="text-[#959595] italic">{endDate}</span>
           </p>
           <p id="destination-info">
             <BiWorld />
@@ -61,6 +68,8 @@ Reservation.defaultProps = {
   bookingId: null,
   bookingDestination: null,
   packageTitle: null,
+  startDate: null,
+  endDate: null,
 };
 
 Reservation.propTypes = {
@@ -70,6 +79,8 @@ Reservation.propTypes = {
   bookingId: PropTypes.number,
   bookingDestination: PropTypes.string,
   packageTitle: PropTypes.string,
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
 };
 
 export default Reservation;
