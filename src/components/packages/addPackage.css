@@ -11,7 +11,8 @@
   padding: 70px 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0.521)),
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0.521)),
     url(../../images/add_package.jpg);
   display: flex;
   color: white;
@@ -88,7 +89,7 @@ select {
   overflow-x: auto;
   width: 450px;
   gap: 5px;
-  height: fit-content;
+  height: max-content;
 }
 
 .new-img-wrapper {
