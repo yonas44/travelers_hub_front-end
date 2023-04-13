@@ -8,7 +8,7 @@ import {
   AiOutlineShoppingCart,
 } from 'react-icons/ai';
 import { BsFillBagDashFill } from 'react-icons/bs';
-import { MdOutlineRoundaboutRight } from 'react-icons/md';
+import { IoMdAdd } from 'react-icons/io';
 import { TbJetpack } from 'react-icons/tb';
 import airline from '../images/airline-gif.gif';
 import { cleanFlash, signout } from '../redux/auth/auth';
@@ -61,15 +61,9 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
               Promotions
             </li>
           </Link>
-          <Link className={style.link} onClick={handleSidebar} to="/about">
-            <li className={style.list}>
-              <MdOutlineRoundaboutRight />
-              About
-            </li>
-          </Link>
           <Link className={style.link} onClick={handleSidebar} to="/addPackage">
             <li className={style.list}>
-              <MdOutlineRoundaboutRight />
+              <IoMdAdd />
               Add package
             </li>
           </Link>

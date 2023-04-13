@@ -51,7 +51,8 @@ const packageSlice = createSlice({
             ...state,
             pending: false,
             sucess: false,
-            error: action.payload.error,
+            message: '',
+            err: action.payload.error,
           };
         }
 
@@ -59,6 +60,7 @@ const packageSlice = createSlice({
           ...state,
           sucess: true,
           pending: false,
+          err: '',
           message: action.payload.message,
         };
       })
