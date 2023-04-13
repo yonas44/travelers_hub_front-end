@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-multi-date-picker';
 import './bookings.css';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import postReservations from '../../redux/reservations/postReservations';
 import { fetchPackages } from '../../redux/packageSlice';
 import { getToken } from '../../redux/auth/auth';
@@ -13,19 +13,12 @@ const BookingForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const packages = useSelector((state) => state.flightpackage);
-  const location = useLocation();
-  const flightpackage = location.state;
-  let initialSelection;
-
-  {
-    flightpackage
-      ? (initialSelection = flightpackage.id)
-      : (initialSelection = 1);
-  }
 
   const [startDate, setStartDate] = useState('Choose Start Date');
   const [endDate, setEndDate] = useState('Choose End Date');
-  const [selectedPackage, setSelectedPackage] = useState(initialSelection);
+  const [selectedPackage, setSelectedPackage] = useState(
+    packages.flightpackage[0]?.id,
+  );
 
   const handleSelectChange = (event) => {
     setSelectedPackage(event.target.value);
@@ -44,7 +37,7 @@ const BookingForm = () => {
   };
 
   useEffect(() => {
-    if (!Object.values(packages).length) {
+    if (!packages.flightpackage.length) {
       dispatch(fetchPackages());
     }
   }, []);
@@ -99,7 +92,7 @@ const BookingForm = () => {
 };
 
 export default function Bookings() {
-  const isAuthenticated = getToken;
+  const isAuthenticated = getToken();
 
   if (!isAuthenticated) {
     return <Navigate to="/sign_in" />;

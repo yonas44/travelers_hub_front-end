@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Reservations from './components/reservations/reservations';
 import BookingPage from './pages/BookingPage';
+import AddPackage from './components/packages/AddPackage';
 
 const App = () => {
   const style = {
@@ -20,6 +21,8 @@ const App = () => {
   const handleSidebar = () => {
     setSidebar(!sidebar);
   };
+
+  const [show, setShow] = useState(false);
 
   return (
     <BrowserRouter>
@@ -31,10 +34,14 @@ const App = () => {
           <div className="main-container col-12 h-100">
             <Routes>
               <Route path="/booking" element={<BookingPage />} />
-              <Route path="/" element={<Package />} />
+              <Route
+                path="/"
+                element={<Package show={show} setShow={setShow} />}
+              />
               <Route path="/sign_up" element={<Register />} />
               <Route path="/sign_in" element={<Login />} />
               <Route path="/details" element={<PackageDetails />} />
+              <Route path="/addPackage" element={<AddPackage />} />
               <Route path="/reservations" element={<Reservations />} />
             </Routes>
           </div>

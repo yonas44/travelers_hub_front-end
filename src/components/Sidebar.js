@@ -60,6 +60,12 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
               About
             </li>
           </Link>
+          <Link className={style.link} onClick={handleSidebar} to="/addPackage">
+            <li className={style.list}>
+              <MdOutlineRoundaboutRight />
+              Add package
+            </li>
+          </Link>
           {current ? (
             <button
               type="button"
