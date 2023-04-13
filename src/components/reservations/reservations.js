@@ -13,6 +13,8 @@ const Reservations = () => {
   const dispatch = useDispatch();
   const [current, setCurrent] = useState();
 
+  const { user } = useSelector((state) => state.auth);
+
   const allBookings = useSelector((state) => state.reservations);
   const bookings = allBookings.data.filter((booking) => {
     if (allBookings.selected === 'All') {
@@ -36,7 +38,7 @@ const Reservations = () => {
       if (allBookings.message) flash('success', allBookings.message);
       else if (allBookings.err) flash('error', allBookings.err);
     }
-  }, [allBookings.change]);
+  }, [allBookings.change, user]);
 
   return (
     <main className="reservation-main">
