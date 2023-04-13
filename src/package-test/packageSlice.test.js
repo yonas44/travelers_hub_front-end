@@ -17,11 +17,11 @@ describe('packageSlice', () => {
       await fetchPackages()(dispatch, getState, undefined);
 
       expect(global.fetch).toHaveBeenCalledWith(
-        'http://127.0.0.1:3000/packages'
+        'http://127.0.0.1:3000/packages',
       );
 
       expect(
-        packageReducer(initialState, fetchPackages.fulfilled(fakePackages))
+        packageReducer(initialState, fetchPackages.fulfilled(fakePackages)),
       ).toEqual({
         loading: false,
         message: '',
@@ -41,11 +41,11 @@ describe('packageSlice', () => {
       await fetchPackages()(dispatch, getState, undefined);
 
       expect(global.fetch).toHaveBeenCalledWith(
-        'http://127.0.0.1:3000/packages'
+        'http://127.0.0.1:3000/packages',
       );
 
       expect(
-        packageReducer(initialState, fetchPackages.rejected(fakeError))
+        packageReducer(initialState, fetchPackages.rejected(fakeError)),
       ).toEqual({
         loading: false,
         flightpackage: [],

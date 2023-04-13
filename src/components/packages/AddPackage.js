@@ -8,13 +8,14 @@ import { flash } from '../../redux/flash/flash';
 
 const AddPackage = () => {
   const packages = useSelector((state) => state.flightpackage);
+  const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!sessionStorage.getItem('user')) navigate('/sign_in');
     if (packages.message) flash('success', packages.message);
     else if (packages.err) flash('error', packages.err);
-  }, [packages]);
+  }, [packages, user]);
 
   return (
     <div className="add-package-wrapper">
