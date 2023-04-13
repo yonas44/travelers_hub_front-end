@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import addPackage from './packages/addPackage';
+import deletePackage from './packages/deletePackage';
 
 const initialState = {
   loading: false,
@@ -8,8 +10,7 @@ const initialState = {
 
 export const fetchPackages = createAsyncThunk(
   'packages/fetchPackages',
-  async () => fetch('http://127.0.0.1:3000/packages')
-    .then((response) => response.json()),
+  async () => fetch('http://127.0.0.1:3000/packages').then((response) => response.json()),
 );
 
 const packageSlice = createSlice({
@@ -20,7 +21,12 @@ const packageSlice = createSlice({
     builder.addCase(fetchPackages.pending, (state) => ({
       loading: true,
       flightpackage: {
+        sucess: false,
+        pending: false,
         message: '',
+        change: false,
+        error: '',
+        data: [],
       },
     }));
     builder.addCase(fetchPackages.fulfilled, (state, action) => ({
@@ -28,15 +34,73 @@ const packageSlice = createSlice({
       loading: false,
       flightpackage: action.payload,
       error: '',
+      message: '',
     }));
-    builder.addCase(fetchPackages.rejected, (state, action) => {
-      // eslint-disable-next-line
-      state.loading = false;
-      // eslint-disable-next-line
-      state.flightpackage = [];
-      // eslint-disable-next-line
-      state.error = action.error.message;
-    });
+    builder
+      .addCase(fetchPackages.rejected, (state, action) => {
+        // eslint-disable-next-line
+        state.loading = false;
+        // eslint-disable-next-line
+        state.flightpackage = [];
+        // eslint-disable-next-line
+        state.error = action.error.message;
+      })
+      .addCase(addPackage.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          return {
+            ...state,
+            pending: false,
+            sucess: false,
+            error: action.payload.error,
+          };
+        }
+
+        return {
+          ...state,
+          sucess: true,
+          pending: false,
+          message: action.payload.message,
+        };
+      })
+      .addCase(addPackage.pending, (state) => ({
+        ...state,
+        pending: true,
+      }))
+      .addCase(addPackage.rejected, (state, action) => ({
+        ...state,
+        sucess: false,
+        message: action.payload.message,
+      }))
+      .addCase(deletePackage.pending, (state) => ({
+        ...state,
+        pending: true,
+      }))
+      .addCase(deletePackage.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          return {
+            ...state,
+            pending: false,
+            sucess: false,
+            message: '',
+            change: !state.change,
+            error: action.payload.error,
+          };
+        }
+
+        return {
+          ...state,
+          sucess: true,
+          pending: false,
+          change: !state.change,
+          error: '',
+          message: action.payload.message,
+        };
+      })
+      .addCase(deletePackage.rejected, (state, action) => ({
+        ...state,
+        sucess: false,
+        error: action.payload.message,
+      }));
   },
 });
 

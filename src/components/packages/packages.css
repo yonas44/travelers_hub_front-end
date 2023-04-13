@@ -1,0 +1,23 @@
+.package-info {
+  position: relative;
+}
+
+.owner-options {
+  display: flex;
+  margin-right: 10px;
+  gap: 10px;
+  justify-content: flex-end;
+  height: max-content;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+}
+
+#remove-package-btn {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 1.4rem;
+  cursor: pointer;
+}

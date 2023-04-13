@@ -4,12 +4,6 @@ exports[`Reservation component renders It matches the snapshot 1`] = `
 <main
   className="reservation-main"
 >
-  <p
-    className="removed-message "
-  />
-  <p
-    className="removed-message-error "
-  />
   <div
     className="filter-options"
   >

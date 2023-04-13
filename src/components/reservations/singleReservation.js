@@ -3,8 +3,7 @@ import { BiWorld } from 'react-icons/bi';
 import { GiCheckMark } from 'react-icons/gi';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { PropTypes } from 'prop-types';
-import { useDispatch } from 'react-redux';
-import deleteReservation from '../../redux/reservations/deleteReservations';
+import DeleteModal from '../deleteModal';
 
 const Reservation = (props) => {
   const {
@@ -14,17 +13,11 @@ const Reservation = (props) => {
     current,
     bookingDestination,
     packageTitle,
+    startDate,
+    endDate,
   } = props;
-  const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
-
-  const handleConfirm = (inp) => {
-    if (inp.target.textContent === 'Ok') {
-      dispatch(deleteReservation(bookingId));
-    }
-    setShow(false);
-  };
 
   return (
     <>
@@ -33,11 +26,16 @@ const Reservation = (props) => {
         {Number(current) === bookingAuthorId && (
           <span id="booking-owner-badge">Owned</span>
         )}
-        <div className="reservation-info">
+        <div className="reservation-info py-4">
           <h3>{packageTitle}</h3>
-          <p>
-            Booked
+          <p className="flex gap-[10px] items-center">
             <GiCheckMark id="check-mark" />
+            Booked on
+            <span className="text-[#959595] italic">{startDate}</span>
+          </p>
+          <p className="flex gap-[8px] items-center">
+            Ends on
+            <span className="text-[#959595] italic">{endDate}</span>
           </p>
           <p id="destination-info">
             <BiWorld />
@@ -57,27 +55,7 @@ const Reservation = (props) => {
         )}
       </div>
       {show && (
-        <div className="delete-confirm-wrapper">
-          <div className="delete-reservation-popop">
-            <p>Are you sure, you want to delete it?</p>
-            <div className="confirm-buttons-wrapper">
-              <button
-                type="button"
-                className="delete-reservation-cancel"
-                onClick={handleConfirm}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="delete-reservation-ok"
-                onClick={handleConfirm}
-              >
-                Ok
-              </button>
-            </div>
-          </div>
-        </div>
+        <DeleteModal typeOf="reservation" setShow={setShow} id={bookingId} />
       )}
     </>
   );
@@ -90,6 +68,8 @@ Reservation.defaultProps = {
   bookingId: null,
   bookingDestination: null,
   packageTitle: null,
+  startDate: null,
+  endDate: null,
 };
 
 Reservation.propTypes = {
@@ -99,6 +79,8 @@ Reservation.propTypes = {
   bookingId: PropTypes.number,
   bookingDestination: PropTypes.string,
   packageTitle: PropTypes.string,
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
 };
 
 export default Reservation;
