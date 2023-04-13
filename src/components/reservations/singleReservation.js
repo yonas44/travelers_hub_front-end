@@ -3,8 +3,7 @@ import { BiWorld } from 'react-icons/bi';
 import { GiCheckMark } from 'react-icons/gi';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { PropTypes } from 'prop-types';
-import { useDispatch } from 'react-redux';
-import deleteReservation from '../../redux/reservations/deleteReservations';
+import DeleteModal from '../deleteModal';
 
 const Reservation = (props) => {
   const {
@@ -15,16 +14,8 @@ const Reservation = (props) => {
     bookingDestination,
     packageTitle,
   } = props;
-  const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
-
-  const handleConfirm = (inp) => {
-    if (inp.target.textContent === 'Ok') {
-      dispatch(deleteReservation(bookingId));
-    }
-    setShow(false);
-  };
 
   return (
     <>
@@ -57,27 +48,7 @@ const Reservation = (props) => {
         )}
       </div>
       {show && (
-        <div className="delete-confirm-wrapper">
-          <div className="delete-reservation-popop">
-            <p>Are you sure, you want to delete it?</p>
-            <div className="confirm-buttons-wrapper">
-              <button
-                type="button"
-                className="delete-reservation-cancel"
-                onClick={handleConfirm}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="delete-reservation-ok"
-                onClick={handleConfirm}
-              >
-                Ok
-              </button>
-            </div>
-          </div>
-        </div>
+        <DeleteModal typeOf="reservation" setShow={setShow} id={bookingId} />
       )}
     </>
   );

@@ -6,15 +6,12 @@ import './reservations.css';
 import load from '../../images/loading-icon.gif';
 import Reservation from './singleReservation';
 import getReservations from '../../redux/reservations/getReservations';
+import { flash } from '../../redux/flash/flash';
 
 const Reservations = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [current, setCurrent] = useState();
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
-
-  const { user } = useSelector((state) => state.auth);
 
   const allBookings = useSelector((state) => state.reservations);
   const bookings = allBookings.data.filter((booking) => {
@@ -36,10 +33,10 @@ const Reservations = () => {
     else {
       setCurrent(JSON.parse(sessionStorage.getItem('current')).id);
       dispatch(getReservations());
-      setMessage(allBookings.message);
-      setError(allBookings.err);
+      if (allBookings.message) flash('success', allBookings.message);
+      else if (allBookings.err) flash('error', allBookings.err);
     }
-  }, [allBookings.change, user]);
+  }, [allBookings.change]);
 
   return (
     <main className="reservation-main">
@@ -49,8 +46,6 @@ const Reservations = () => {
         </div>
       ) : (
         <>
-          <p className={`removed-message ${message && 'slide'}`}>{message}</p>
-          <p className={`removed-message-error ${error && 'slide'}`}>{error}</p>
           <FilterOptions />
           <section className="reservations-holder">
             {bookings.length > 0 ? (

@@ -66,11 +66,18 @@ const reservationSlice = createSlice({
       }))
       .addCase(postReservations.fulfilled, (state, action) => {
         if (action.payload.sucess) {
-          return { ...state, pending: false, message: action.payload.message };
+          return {
+            ...state,
+            pending: false,
+            message: action.payload.message,
+            change: !state.change,
+          };
         }
         return {
           ...state,
           pending: false,
+          change: !state.change,
+          message: '',
           err: action.payload.err,
         };
       })
