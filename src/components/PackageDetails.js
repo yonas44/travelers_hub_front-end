@@ -9,11 +9,19 @@ const PackageDetails = () => {
   };
   return (
     <div className="md:ml-[320px] mb-[10px]">
-      <h1 className="mt-[50px] text-center text-[45px]">{flightpackage.title}</h1>
-      <small className="block text-center text-[18px] text-[#008000] my-2">{flightpackage.destination}</small>
+      <h1 className="mt-[50px] text-center text-[45px]">
+        {flightpackage.title}
+      </h1>
+      <small className="block text-center text-[18px] text-[#008000] my-2">
+        {flightpackage.destination}
+      </small>
       <div className="md:flex m-4 items-start">
         <div>
-          <img alt={flightpackage.title} className="packageDetails_img rounded-md" src={flightpackage.photo} />
+          <img
+            alt={flightpackage.title}
+            className="packageDetails_img rounded-md"
+            src={flightpackage.photo}
+          />
         </div>
         <div>
           <p>{flightpackage.description}</p>
@@ -36,18 +44,23 @@ const PackageDetails = () => {
             </small>
           </p>
           <p className={style.text}>
-            {
-              flightpackage.flight ? (
-                <p>
-                  Flight:
-                  <span className="package_detail"> Included</span>
-                </p>
-              ) : (
-                <p>Flight: not included</p>
-              )
-            }
+            {flightpackage.flight ? (
+              <p>
+                Flight:
+                <span className="package_detail"> Included</span>
+              </p>
+            ) : (
+              <p>Flight: not included</p>
+            )}
           </p>
-          <Link to="/booking"><button type="button" className="rounded-md my-4 bg-[#000] mb-2 text-[#fff] p-4">Book this package</button></Link>
+          <Link to={{ pathname: '/booking', state: { id: flightpackage.id } }}>
+            <button
+              type="button"
+              className="rounded-md my-4 bg-[#000] mb-2 text-[#fff] p-4"
+            >
+              Book this package
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -29,18 +29,11 @@ const reservationSlice = createSlice({
       .addCase(getReservations.pending, (state) => ({
         ...state,
         pending: true,
+        err: '',
+        message: '',
       }))
       .addCase(getReservations.fulfilled, (state, action) => {
-        if (action.payload.success) {
-          if (action.payload.message) {
-            return {
-              ...state,
-              pending: false,
-              err: '',
-              message: action.payload.message,
-              data: [],
-            };
-          }
+        if (action.payload.sucess) {
           return {
             ...state,
             pending: false,
@@ -49,6 +42,7 @@ const reservationSlice = createSlice({
             data: action.payload.data,
           };
         }
+
         return {
           ...state,
           pending: false,
@@ -64,9 +58,13 @@ const reservationSlice = createSlice({
       .addCase(deleteReservation.pending, (state) => ({
         ...state,
         pending: true,
+        err: '',
+        message: '',
       }))
       .addCase(postReservations.pending, (state) => ({
         ...state,
+        err: '',
+        message: '',
         pending: true,
       }))
       .addCase(postReservations.fulfilled, (state, action) => {
@@ -99,7 +97,7 @@ const reservationSlice = createSlice({
         return {
           ...state,
           pending: false,
-          err: action.payload.error,
+          err: action.payload.message,
           message: '',
           change: !state.change,
         };

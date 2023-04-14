@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getToken } from '../auth/auth';
 
-const PACKAGE_URL = `${process.env.REACT_APP_API_ROOT_URL}/package`;
-
 const deletePackage = createAsyncThunk('deletePackage', async (id) => {
+  const PACKAGE_URL = `${process.env.REACT_APP_API_ROOT_URL}/packages/${id}`;
+
   try {
     const response = await fetch(PACKAGE_URL, {
       method: 'delete',
@@ -11,7 +11,6 @@ const deletePackage = createAsyncThunk('deletePackage', async (id) => {
         'Content-Type': 'application/json',
         Authorization: getToken(),
       },
-      body: JSON.stringify({ id }),
     });
 
     const data = await response.json();

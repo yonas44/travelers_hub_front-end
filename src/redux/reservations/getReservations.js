@@ -16,14 +16,11 @@ const getReservations = createAsyncThunk('getReservations', async () => {
     });
 
     const data = await response.json();
-    if (data.message) {
-      return { success: true, message: data.message };
-    }
 
-    if (data.errors) {
-      return { sucess: false, err: 'Session has expired!' };
+    if (response.ok) {
+      return { sucess: true, data };
     }
-    return { sucess: true, data };
+    return { sucess: false, err: 'Session has expired!' };
   } catch (err) {
     return { success: false, err };
   }

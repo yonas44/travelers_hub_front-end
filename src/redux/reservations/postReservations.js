@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getToken } from '../auth/auth';
 
-const RESERVATION_URL = `${process.env.REACT_APP_API_ROOT_URL}/booking`;
+const RESERVATION_URL = `${process.env.REACT_APP_API_ROOT_URL}/bookings`;
 
 const postReservations = createAsyncThunk(
   'postReservations',
