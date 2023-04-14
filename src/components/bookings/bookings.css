@@ -245,3 +245,17 @@ select > option {
     font-size: 3.5em;
   }
 }
+
+.loading-wrapper {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+#loading-gif {
+  margin-top: 200px;
+  width: 60px;
+}

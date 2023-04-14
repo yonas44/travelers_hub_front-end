@@ -8,17 +8,20 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import postReservations from '../../redux/reservations/postReservations';
 import { fetchPackages } from '../../redux/packageSlice';
 import { getToken } from '../../redux/auth/auth';
+import load from '../../images/loading-icon.gif';
+import { flash } from '../../redux/flash/flash';
 
 const BookingForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const packages = useSelector((state) => state.flightpackage);
+  const { pending, message, err } = useSelector((state) => state.reservations);
+
+  const { user } = useSelector((state) => state.auth);
 
   const [startDate, setStartDate] = useState('Choose Start Date');
   const [endDate, setEndDate] = useState('Choose End Date');
-  const [selectedPackage, setSelectedPackage] = useState(
-    packages.flightpackage[0]?.id,
-  );
+  const [selectedPackage, setSelectedPackage] = useState(null);
 
   const handleSelectChange = (event) => {
     setSelectedPackage(event.target.value);
@@ -29,18 +32,22 @@ const BookingForm = () => {
     const postObject = {
       start_time: startDate.toString(),
       end_time: endDate.toString(),
-      package_id: selectedPackage,
+      package_id: selectedPackage || packages.flightpackage[0]?.id,
     };
 
     dispatch(postReservations(postObject));
-    navigate('/reservations');
+    setSelectedPackage(null);
   };
 
+  if (message) navigate('/reservations');
+
   useEffect(() => {
+    if (!sessionStorage.getItem('user')) navigate('/sign_in');
     if (!packages.flightpackage.length) {
       dispatch(fetchPackages());
     }
-  }, []);
+    if (err) flash('error', err);
+  }, [pending, user]);
 
   return (
     <div className="booking-container">
@@ -87,6 +94,11 @@ const BookingForm = () => {
           <input className="form-button" type="submit" value="Submit" />
         </div>
       </form>
+      {pending && (
+        <div className="loading-wrapper">
+          <img id="loading-gif" src={load} alt="loading-img" />
+        </div>
+      )}
     </div>
   );
 };

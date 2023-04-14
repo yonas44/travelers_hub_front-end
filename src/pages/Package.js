@@ -18,7 +18,6 @@ const Package = () => {
   );
 
   const { success } = useSelector((state) => state.auth);
-  const [current] = useState(JSON.parse(sessionStorage.getItem('current'))?.id);
   const [show, setShow] = useState(false);
   const [Id, setId] = useState('');
 
@@ -86,7 +85,8 @@ const Package = () => {
                       <small className={style.text}>{flight.destination}</small>
                     </div>
                   </Link>
-                  {Number(current) === flight.user_id && (
+                  {Number(JSON.parse(sessionStorage.getItem('current'))?.id)
+                    === flight.user_id && (
                     <div className="owner-options">
                       <button type="button" id="remove-package-btn">
                         <RiDeleteBin5Fill

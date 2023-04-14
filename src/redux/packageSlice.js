@@ -20,14 +20,7 @@ const packageSlice = createSlice({
     // eslint-disable-next-line
     builder.addCase(fetchPackages.pending, (state) => ({
       loading: true,
-      flightpackage: {
-        sucess: false,
-        pending: false,
-        message: '',
-        change: false,
-        error: '',
-        data: [],
-      },
+      flightpackage: [],
     }));
     builder.addCase(fetchPackages.fulfilled, (state, action) => ({
       ...state,
@@ -49,7 +42,7 @@ const packageSlice = createSlice({
         if (action.payload.error) {
           return {
             ...state,
-            pending: false,
+            loading: false,
             sucess: false,
             message: '',
             err: action.payload.error,
@@ -59,14 +52,14 @@ const packageSlice = createSlice({
         return {
           ...state,
           sucess: true,
-          pending: false,
+          loading: false,
           err: '',
           message: action.payload.message,
         };
       })
       .addCase(addPackage.pending, (state) => ({
         ...state,
-        pending: true,
+        loading: true,
       }))
       .addCase(addPackage.rejected, (state, action) => ({
         ...state,
@@ -75,13 +68,13 @@ const packageSlice = createSlice({
       }))
       .addCase(deletePackage.pending, (state) => ({
         ...state,
-        pending: true,
+        loading: true,
       }))
       .addCase(deletePackage.fulfilled, (state, action) => {
         if (action.payload.error) {
           return {
             ...state,
-            pending: false,
+            loading: false,
             sucess: false,
             message: '',
             change: !state.change,
@@ -92,7 +85,7 @@ const packageSlice = createSlice({
         return {
           ...state,
           sucess: true,
-          pending: false,
+          loading: false,
           change: !state.change,
           error: '',
           message: action.payload.message,
