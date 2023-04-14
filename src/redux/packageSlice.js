@@ -8,9 +8,11 @@ const initialState = {
   error: '',
 };
 
+const PACKAGE_URL = `${process.env.REACT_APP_API_ROOT_URL}/packages`;
+
 export const fetchPackages = createAsyncThunk(
   'packages/fetchPackages',
-  async () => fetch('http://127.0.0.1:3000/packages').then((response) => response.json()),
+  async () => fetch(PACKAGE_URL).then((response) => response.json()),
 );
 
 const packageSlice = createSlice({
