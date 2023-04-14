@@ -1,16 +1,14 @@
 .add-package-wrapper {
-  min-height: 100vh;
   display: flex;
   text-align: left;
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .form-holder {
-  margin: auto;
+  width: 100%;
   padding: 70px 0;
-  width: 100vw;
-  height: 100vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0.521)),
     url(../../images/add_package.jpg);
@@ -37,6 +35,10 @@
 #add_package_img {
   display: none;
   width: 400px;
+  background: url(../../images/add_package.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .package-image-holder {
@@ -139,9 +141,24 @@ select {
   background-color: red;
 }
 
+.loading-wrapper {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+#loading-gif {
+  margin: auto;
+  width: 60px;
+}
+
 @media screen and (min-width: 768px) {
   .add-package-wrapper {
     margin-left: 300px;
+    width: calc(100% - 300px);
   }
 
   .form-holder {

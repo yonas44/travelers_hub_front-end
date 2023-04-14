@@ -38,6 +38,7 @@ const reservationSlice = createSlice({
             ...state,
             pending: false,
             err: '',
+            message: '',
             data: action.payload.data,
           };
         }
